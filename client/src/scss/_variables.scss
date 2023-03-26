@@ -1,0 +1,13 @@
+// $variable: #color;
+$green: #0D4530;
+$dark-gray: #2E2C2D;
+$gray: #848484;
+$dark-green: #013D29;
+$orange: #F09050;
+$dark-white: #F6F7F9;
+
+@mixin flexMode() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

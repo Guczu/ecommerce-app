@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.navbar--container {
+  width: 1800px;
+  font-family: "Exo", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 20px;
+}
+
+.navbar--logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar--logo:hover {
+  cursor: pointer;
+}
+.navbar--logo img {
+  width: 75px;
+}
+.navbar--logo span {
+  color: #0D4530;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.navbar--links span {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #2E2C2D;
+  padding: 10px;
+}
+.navbar--links span:hover {
+  cursor: pointer;
+  filter: brightness(1.5);
+}
+
+.navbar--search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.navbar--search .search--icon {
+  position: absolute;
+  right: 10px;
+  font-size: 24px;
+  top: 8px;
+  color: #848484;
+}
+.navbar--search .search--icon:hover {
+  cursor: pointer;
+}
+.navbar--search input {
+  font-weight: 500;
+  width: 300px;
+  height: 20px;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  margin-left: 5px;
+  background-color: #F6F7F9;
+  color: #848484;
+}
+.navbar--search input:focus {
+  outline: none;
+}
+
+.navbar--cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-size: 32px;
+}
+.navbar--cart span {
+  margin-left: 10px;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+.navbar--cart:hover {
+  cursor: pointer;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}/*# sourceMappingURL=main.css.map */

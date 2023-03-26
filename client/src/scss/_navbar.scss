@@ -1,0 +1,89 @@
+.navbar--container {
+    width: 1800px;
+    font-family: 'Exo', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 20px;
+}
+
+.navbar--logo {
+    @include flexMode();
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    img {
+        width: 75px;
+    }
+
+    span {
+        color: $green;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+}
+
+.navbar--links {
+    span {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: $dark-gray;
+        padding: 10px;
+    }
+
+    span:hover {
+        cursor: pointer;
+        filter: brightness(1.5)
+    }
+}
+
+.navbar--search {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .search--icon {
+        position: absolute;
+        right: 10px;
+        font-size: 24px;
+        top: 8px;
+        color: $gray;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    input {
+        font-weight: 500;
+        width: 300px;
+        height: 20px;
+        border: none;
+        border-radius: 20px;
+        padding: 10px;
+        margin-left: 5px;
+        background-color: $dark-white;
+        color: $gray;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.navbar--cart {
+    @include flexMode();
+    position: relative;
+    font-size: 32px;
+
+    span {
+        margin-left: 10px;
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}

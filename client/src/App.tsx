@@ -1,12 +1,12 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import Navbar from './components/Navbar'
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      main app
+    <div className='App'>
+      <Navbar />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
