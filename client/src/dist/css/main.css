@@ -4,7 +4,7 @@
   font-family: "Exo", sans-serif;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   padding-top: 20px;
 }
 
@@ -12,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 1vw;
 }
 .navbar--logo:hover {
   cursor: pointer;
@@ -29,7 +30,7 @@
   font-size: 1.1rem;
   font-weight: 500;
   color: #2E2C2D;
-  padding: 10px;
+  padding: 1vw;
 }
 .navbar--links span:hover {
   cursor: pointer;
@@ -60,6 +61,8 @@
   position: relative;
   display: flex;
   align-items: center;
+  margin-left: 4vw;
+  margin-right: 4vw;
 }
 .navbar--search .search--icon {
   position: absolute;
@@ -137,6 +140,7 @@
   position: relative;
   font-size: 32px;
   top: 5px;
+  margin-left: 2vw;
 }
 .navbar--hamburger:hover {
   cursor: pointer;
