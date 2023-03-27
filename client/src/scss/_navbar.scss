@@ -1,3 +1,5 @@
+@import './media-queries';
+
 .navbar--container {
     width: 1800px;
     font-family: 'Exo', sans-serif;
@@ -27,7 +29,7 @@
 
 .navbar--links {
     span {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: 500;
         color: $dark-gray;
         padding: 10px;
@@ -36,6 +38,19 @@
     span:hover {
         cursor: pointer;
         filter: brightness(1.5)
+    }
+
+    @include phone {
+        display: none;
+    }
+    @include tablet {
+        display: none;
+    }
+    @include laptop {
+        display: none;
+    }
+    @include sm-desktop {
+        display: none;
     }
 }
 
@@ -55,6 +70,7 @@
             cursor: pointer;
         }
     }
+
     input {
         font-weight: 500;
         width: 300px;
@@ -69,6 +85,13 @@
         &:focus {
             outline: none;
         }
+    }
+
+    @include phone {
+        display: none;
+    }
+    @include tablet {
+        display: none;
     }
 }
 
@@ -85,5 +108,42 @@
 
     &:hover {
         cursor: pointer;
+    }
+
+    @include phone {
+        display: none;
+    }
+    @include tablet {
+        display: none;
+    }
+    @include laptop {
+        display: none;
+    }
+    @include sm-desktop {
+        display: none;
+    }
+}
+
+.navbar--hamburger {
+    display: none;
+    position: relative;
+    font-size: 32px;
+    top: 5px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    @include phone {
+        display: block;
+    }
+    @include tablet {
+        display: block;
+    }
+    @include laptop {
+        display: block;
+    }
+    @include sm-desktop {
+        display: block;
     }
 }

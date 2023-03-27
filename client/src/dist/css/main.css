@@ -26,7 +26,7 @@
 }
 
 .navbar--links span {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 500;
   color: #2E2C2D;
   padding: 10px;
@@ -34,6 +34,26 @@
 .navbar--links span:hover {
   cursor: pointer;
   filter: brightness(1.5);
+}
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  .navbar--links {
+    display: none;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 576px) {
+  .navbar--links {
+    display: none;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .navbar--links {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .navbar--links {
+    display: none;
+  }
 }
 
 .navbar--search {
@@ -65,6 +85,16 @@
 .navbar--search input:focus {
   outline: none;
 }
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  .navbar--search {
+    display: none;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 576px) {
+  .navbar--search {
+    display: none;
+  }
+}
 
 .navbar--cart {
   display: flex;
@@ -80,6 +110,56 @@
 }
 .navbar--cart:hover {
   cursor: pointer;
+}
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  .navbar--cart {
+    display: none;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 576px) {
+  .navbar--cart {
+    display: none;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .navbar--cart {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .navbar--cart {
+    display: none;
+  }
+}
+
+.navbar--hamburger {
+  display: none;
+  position: relative;
+  font-size: 32px;
+  top: 5px;
+}
+.navbar--hamburger:hover {
+  cursor: pointer;
+}
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  .navbar--hamburger {
+    display: block;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 576px) {
+  .navbar--hamburger {
+    display: block;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .navbar--hamburger {
+    display: block;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .navbar--hamburger {
+    display: block;
+  }
 }
 
 body {
