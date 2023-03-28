@@ -1,7 +1,6 @@
 @import './media-queries';
 
 .navbar--container {
-    width: 1800px;
     font-family: 'Exo', sans-serif;
     display: flex;
     align-items: center;
@@ -53,6 +52,9 @@
     @include sm-desktop {
         display: none;
     }
+    @include desktop {
+        display: none;
+    }
 }
 
 .navbar--search {
@@ -76,7 +78,7 @@
 
     input {
         font-weight: 500;
-        width: 300px;
+        width: 30vw;
         height: 20px;
         border: none;
         border-radius: 20px;
@@ -95,6 +97,9 @@
     }
     @include tablet {
         display: none;
+    }
+    @include xl-desktop {
+        width: 20vw;
     }
 }
 
