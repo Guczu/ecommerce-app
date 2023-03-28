@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './Navbar'
 import bannerImage from '../images/banner-image.png'
 import Filters from './Filters'
+import Products from './Products'
 
 const Home: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ const Home: React.FC = () => {
     <Filters />
 
     {/* products */}
+    <Products />
 
     {/* footer */}
     </div>

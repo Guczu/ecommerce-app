@@ -4,6 +4,7 @@
 @import './media-queries';
 @import './home';
 @import './filters';
+@import './products';
 
 body {
     margin: 0;
@@ -12,5 +13,5 @@ body {
 
 .App {
     @include flexMode();
-    width: 100vw;
+    width: 98vw;
 }
