@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from './Navbar'
 import bannerImage from '../images/banner-image.png'
+import Filters from './Filters'
 
 const Home: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const Home: React.FC = () => {
         </div>
 
     {/* sorting options */}
+    <Filters />
 
     {/* products */}
 

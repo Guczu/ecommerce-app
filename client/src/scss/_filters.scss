@@ -1,0 +1,86 @@
+.filters--container {
+    display: flex;
+    width: 80vw;
+    margin-top: 40px;
+    justify-content: space-between;
+
+    @include phone {
+        width: 100vw;
+    }
+    @include laptop {
+        width: 75vw;
+    }
+    @include sm-desktop {
+        width: 70vw;
+    }
+    @include desktop {
+        width: 80vw;
+    }
+}
+
+.filters--wrapper {
+    display: flex;
+    @include phone {
+        display: none;
+    }
+    @include tablet {
+        display: none;
+    }
+    @include laptop {
+        display: none;
+    }
+    @include sm-desktop {
+        display: none;
+    }
+}
+
+.filters--label {
+    width: auto;
+    @include flexMode();
+    padding: 10px;
+    height: 10px;
+    background-color: $light-gray;
+    font-family: 'Exo', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: 20px;
+    margin-right: 1vw;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $light-gray-hover;
+    }
+
+    @include phone {
+        margin-left: 4vw;
+        margin-right: 4vw;
+    }
+}
+
+.filters--icon {
+    position: relative;
+    font-size: 18px;
+    top: 3px;
+    padding-left: 1px;
+}
+
+.empty {
+    background-color: transparent;
+    border: 1px solid #ebebeb;
+}
+
+.allfilters {
+    display: none;
+    @include phone {
+        display: flex;
+    }
+    @include tablet {
+        display: flex;
+    }
+    @include laptop {
+        display: flex;
+    }
+    @include sm-desktop {
+        display: flex;
+    }
+}

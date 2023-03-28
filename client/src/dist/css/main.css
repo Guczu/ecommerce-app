@@ -350,6 +350,118 @@
   height: 300px;
 }
 
+.filters--container {
+  display: flex;
+  width: 80vw;
+  margin-top: 40px;
+  justify-content: space-between;
+}
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  .filters--container {
+    width: 100vw;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .filters--container {
+    width: 75vw;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .filters--container {
+    width: 70vw;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1400px) {
+  .filters--container {
+    width: 80vw;
+  }
+}
+
+.filters--wrapper {
+  display: flex;
+}
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  .filters--wrapper {
+    display: none;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 576px) {
+  .filters--wrapper {
+    display: none;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .filters--wrapper {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .filters--wrapper {
+    display: none;
+  }
+}
+
+.filters--label {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  height: 10px;
+  background-color: #ebebeb;
+  font-family: "Exo", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: 20px;
+  margin-right: 1vw;
+}
+.filters--label:hover {
+  cursor: pointer;
+  background-color: #f3f3f3;
+}
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  .filters--label {
+    margin-left: 4vw;
+    margin-right: 4vw;
+  }
+}
+
+.filters--icon {
+  position: relative;
+  font-size: 18px;
+  top: 3px;
+  padding-left: 1px;
+}
+
+.empty {
+  background-color: transparent;
+  border: 1px solid #ebebeb;
+}
+
+.allfilters {
+  display: none;
+}
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  .allfilters {
+    display: flex;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 576px) {
+  .allfilters {
+    display: flex;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .allfilters {
+    display: flex;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .allfilters {
+    display: flex;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
