@@ -2,22 +2,27 @@ import React from 'react'
 import productimg from '../images/product_thumbnail.png'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { AiFillStar } from 'react-icons/ai'
+import { Product } from '../interfaces'
 
-const SingleProduct: React.FC = () => {
+interface Props {
+  product: Product;
+}
+
+const SingleProduct: React.FC<Props> = ({ product }) => {
   return (
     <div className='products--tile'>
       <div className='products--like'>
         <AiOutlineHeart />
       </div>
       <div className='products--thumbnail'>
-        <img src={productimg}></img>
+        <img src={product.images[0]}></img>
       </div>
       <div className='products--info'>
-          <span className='products--name'>Wireless Earbuds, IPX8</span>
-          <span className='products--price'>$89.00</span>
+          <span className='products--name'>{product.name}</span>
+          <span className='products--price'>${product.price}</span>
       </div>
       <div className='products--description'>
-        <span>Short description of product</span>
+        <span>{product.description}</span>
       </div>
       <div className='products--rating'>
         <div>

@@ -3,8 +3,13 @@ import Navbar from './Navbar'
 import bannerImage from '../images/banner-image.png'
 import Filters from './Filters'
 import Products from './Products'
+import { Product } from '../interfaces'
 
-const Home: React.FC = () => {
+interface Props {
+  products: Product[];
+}
+
+const Home: React.FC<Props> = ({ products }) => {
   return (
     <div className='home--container'>
         <Navbar />
@@ -23,7 +28,7 @@ const Home: React.FC = () => {
     <Filters />
 
     {/* products */}
-    <Products />
+    <Products products={products}/>
 
     {/* footer */}
     </div>
