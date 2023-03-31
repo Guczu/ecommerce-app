@@ -156,3 +156,16 @@
         display: block;
     }
 }
+
+.navbar--cart-amount {
+    @include flexMode();
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: $light-red;
+    font-size: 0.35em;
+    border-radius: 100%;
+    top: 0;
+    left: 23px;
+    font-weight: 600;
+}

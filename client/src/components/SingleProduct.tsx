@@ -1,15 +1,36 @@
-import React from 'react'
-import productimg from '../images/product_thumbnail.png'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { AiFillStar } from 'react-icons/ai'
 import { Product } from '../interfaces'
+import AddedToCartPopup from './AddedToCartPopup';
 
 interface Props {
   product: Product;
 }
 
 const SingleProduct: React.FC<Props> = ({ product }) => {
+  const [cartPopupTrigger, setCartPopupTrigger] = useState<boolean>(false);
+
+  const addToCart = () => {
+    const cartItems: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
+    const newItem: Product = product;
+    const newCart: Product[] = [...cartItems, newItem];
+    localStorage.setItem('cart', JSON.stringify(newCart));
+
+    setCartPopupTrigger(!cartPopupTrigger);
+  }
+
+  useEffect(() => {
+    const timer: NodeJS.Timeout = setTimeout(() => {
+      setCartPopupTrigger(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  },[cartPopupTrigger])
+
   return (
+    <>
+    {cartPopupTrigger && <AddedToCartPopup />}
     <div className='products--tile'>
       <div className='products--like'>
         <AiOutlineHeart />
@@ -34,8 +55,9 @@ const SingleProduct: React.FC<Props> = ({ product }) => {
         </div>
         <span>(121)</span>
       </div>
-      <button className='products--button'>Add to Cart</button>
+      <button className='products--button' onClick={addToCart}>Add to Cart</button>
     </div>
+    </>
   )
 }
 

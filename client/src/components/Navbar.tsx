@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../images/logo.png'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { BsCartCheck } from 'react-icons/bs'
 import { RxHamburgerMenu } from 'react-icons/rx'
+import { Product } from '../interfaces'
 
 const Navbar: React.FC = () => {
+    const [cartAmount, setCartAmount] = useState<number>(0);
+
+    useEffect(() => {
+        const cartItems: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
+        cartItems && setCartAmount(cartItems.length)
+    },[])
+
   return (
     <header className='navbar--container'>
         <div className='navbar--logo'>
@@ -22,6 +30,11 @@ const Navbar: React.FC = () => {
             <div className='search--icon'><AiOutlineSearch /></div>
         </div>
         <div className='navbar--cart'>
+            {cartAmount !== 0 && (
+                <div className='navbar--cart-amount'>
+                    {cartAmount}
+                </div>
+            )}
             <BsCartCheck />
             <span>Cart</span>
         </div>

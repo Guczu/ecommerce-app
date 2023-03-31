@@ -10,7 +10,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <div className='index--container'>
       <App />
+    </div>
     </BrowserRouter>
   </React.StrictMode>
 );

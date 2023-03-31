@@ -5,6 +5,7 @@
 @import './home';
 @import './filters';
 @import './products';
+@import './addedtocartpopup';
 
 body {
     margin: 0;
@@ -13,5 +14,9 @@ body {
 
 .App {
     @include flexMode();
-    width: 98vw;
+    width: 95vw;
+}
+
+.index--container {
+    @include flexMode();
 }
