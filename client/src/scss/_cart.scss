@@ -1,0 +1,247 @@
+.cart--container {
+    @include flexMode();
+    flex-direction: column;
+    font-family: 'Exo', sans-serif;
+}
+
+.cart--wrapper {
+    display: flex;
+}
+
+.cart--left-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart--right-wrapper {
+    display: flex;
+}
+
+.cart--items {
+    width: 50vw;
+    font-weight: 500;
+    font-size: 1.5rem;
+    padding: 20px;
+    border: 1px solid $light-gray;
+    border-radius: 8px;
+    margin: 10px;
+    max-width: 1100px;
+    position: relative;
+}
+
+.cart--items-title {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart--delivery-info {
+    width: 50vw;
+    padding: 20px;
+    font-weight: 500;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $light-gray;
+    border-radius: 8px;
+    margin: 10px;
+    max-width: 1100px;
+}
+
+.cart--title-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+
+    button {
+        background-color: $light-gray;
+        color: $dark-gray;
+        border-radius: 30px;
+        border: none;
+        padding: 7px;
+        font-weight: 600;
+
+        &:hover {
+            cursor: pointer;
+            background-color: $light-gray-hover;
+        }
+    }
+}
+
+.cart--personal-info {
+    @include flexMode();
+    justify-content: flex-start;
+
+    span {
+        font-size: 1rem;
+        color: $dark-gray;
+        font-weight: 200;
+
+    }
+}
+
+.cart--personal-label {
+    min-width: 150px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.cart--summary {
+    width: 25vw;
+    height: auto;
+    padding: 20px;
+    font-weight: 500;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid $light-gray;
+    border-radius: 8px;
+    margin: 10px;
+    max-width: 600px;
+
+    span {
+        margin-bottom: 20px;
+    }
+}
+
+.cart--discount-code {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 30px;
+
+    input {
+        border-radius: 30px;
+        padding: 8px;
+        width: 50%;
+        height: 15px;
+        border: none;
+        background-color: $dark-white;
+        color: $gray;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    button {
+        width: 30%;
+        border-radius: 30px;
+        height: 31px;
+        border: none;
+        background-color: $green-button;
+        color: $light-gray;
+        font-weight: 600;
+        font-size: 0.7rem;
+        
+        &:hover {
+            cursor: pointer;
+            background-color: $green;
+        }
+    }
+}
+
+.cart--payment {
+    @include flexMode();
+    justify-content: center;
+    align-items: flex-start;
+
+    input {
+        margin-right: 10px;
+    }
+    span {
+        font-size: 1.1rem;
+        font-weight: 400;
+    }
+}
+
+.cart--submit {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    button {
+        width: 100px;
+        border-radius: 30px;
+        height: 40px;
+        border: none;
+        background-color: $green-button;
+        color: $light-gray;
+        font-weight: 600;
+        font-size: 1rem;
+        
+        &:hover {
+            cursor: pointer;
+            background-color: $green;
+        }
+    }
+}
+
+.cart--empty {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    width: 30vw;
+    max-width: 750px;
+    border: 1px solid $light-gray;
+    border-radius: 8px;
+    padding: 80px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    @include flexMode();
+    flex-direction: column;
+
+    span {
+        font-size: 3rem;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    div {
+        font-size: 10rem;
+        position: relative;
+        top: 15px;
+    }
+}
+
+.cart--empty-button {
+    border-radius: 30px;
+    border: none;
+    background-color: $green-button;
+    color: $light-gray;
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 15px;
+    @include flexMode();
+    text-decoration: none;
+    
+    &:hover {
+        cursor: pointer;
+        background-color: $green;
+    }
+}
+
+.cart--items-expand {
+    @include flexMode();
+    font-size: 1.2rem;
+
+    div {
+        position: relative;
+        font-size: 2rem;
+        top: 5px;
+    }
+
+    &:hover {
+        cursor: pointer;
+        color: $dark-gray;
+    }
+}
+
+.cart--items-totalprice {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+}

@@ -6,11 +6,13 @@
     align-items: center;
     justify-content: center;
     padding-top: 20px;
+    margin-bottom: 20px;
 }
 
 .navbar--logo {
     @include flexMode();
     margin-right: 1vw;
+    text-decoration: none;
 
     &:hover {
         cursor: pointer;
@@ -78,12 +80,11 @@
 
     input {
         font-weight: 500;
-        width: 30vw;
+        width: 20vw;
         height: 20px;
         border: none;
         border-radius: 20px;
         padding: 10px;
-        margin-left: 5px;
         background-color: $dark-white;
         color: $gray;
 
@@ -106,9 +107,15 @@
 .navbar--cart {
     @include flexMode();
     position: relative;
-    font-size: 32px;
+    font-size: 28px;
+    text-decoration: none;
+    color: $dark-gray;
+    top: -5px;
+    margin-left: 4px;
 
     span {
+        position: relative;
+        top: 3px;
         margin-left: 10px;
         font-size: 1.3rem;
         font-weight: 500;
@@ -160,12 +167,55 @@
 .navbar--cart-amount {
     @include flexMode();
     position: absolute;
-    width: 15px;
-    height: 15px;
-    background-color: $light-red;
-    font-size: 0.35em;
+    width: 20px;
+    height: 20px;
+    color: white;
+    font-size: 0.45em;
     border-radius: 100%;
-    top: 0;
-    left: 23px;
+    top: 8px;
+    left: 4px;
     font-weight: 600;
+}
+
+.navbar--account {
+    font-size: 32px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    @include phone {
+        display: none;
+    }
+    @include tablet {
+        display: none;
+    }
+    @include laptop {
+        display: none;
+    }
+    @include sm-desktop {
+        display: none;
+    }
+}
+
+.navbar--favourites {
+    font-size: 32px;
+    margin-left: 4px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    @include phone {
+        display: none;
+    }
+    @include tablet {
+        display: none;
+    }
+    @include laptop {
+        display: none;
+    }
+    @include sm-desktop {
+        display: none;
+    }
 }
