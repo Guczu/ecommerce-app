@@ -7,4 +7,5 @@ export interface Product {
     amount: number;
     description: string;
     images: string[];
+    cartQuantity: number;
 }

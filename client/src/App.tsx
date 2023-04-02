@@ -15,6 +15,13 @@ const App: React.FC = () => {
       const cartItems: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
       setCartItems(cartItems);
       cartItems && setCartAmount(cartItems.length)
+  }, [])
+
+  useEffect(() => {
+    const cartQuantity:number = cartItems.reduce((total,item) => {
+      return total + item.cartQuantity;
+    }, 0)
+    setCartAmount(cartQuantity);
   }, [cartItems])
 
   useEffect(() => {
@@ -30,7 +37,7 @@ const App: React.FC = () => {
       <Navbar cartAmount={cartAmount}/>
       <Routes>
         <Route path="/" element={<Home products={products} setCartItems={setCartItems}/>} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
       </Routes>
     </div>
   )

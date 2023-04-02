@@ -7,19 +7,38 @@ import { Link } from 'react-router-dom'
 import { MdOutlineExpandMore } from 'react-icons/md'
 import { MdOutlineExpandLess } from 'react-icons/md'
 
-const Cart: React.FC = () => {
+interface Props {
+    cartItems: Product[];
+    setCartItems: React.Dispatch<React.SetStateAction<Product[]>>;
+}
+
+const Cart: React.FC<Props> = ({ cartItems, setCartItems }) => {
     const [productsInCart, setProductsInCart] = useState<Product[] | []>([]);
     const [expandCartItems, setExpandCartItems] = useState<boolean>(false);
+    const [totalPrice, setTotalPrice] = useState<number>(0);
 
     useEffect(() => {
-        const cartItems: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
         setProductsInCart(cartItems);
-    }, [])
+        const totalPriceOfCart:number = cartItems.reduce((total, item) => {
+            return total + (item.price * item.cartQuantity);
+          }, 0);
+        setTotalPrice(totalPriceOfCart);
+    }, [cartItems])
 
     const removeItem = (id: string) => {
-        console.log(productsInCart);
-        const newProductsInCart: Product[] = productsInCart.filter(product => product._id !== id);
-        console.log(newProductsInCart)
+        const newProductsInCart: Product[] = productsInCart.map(item => {
+            if(item._id === id && item.cartQuantity > 1) {
+                return {...item, cartQuantity: item.cartQuantity - 1}
+            } 
+            else if(item._id === id && item.cartQuantity <= 1){
+                return {...item, cartQuantity: -1};
+            }
+            else {
+                return item;
+            }
+        }).filter(item => item.cartQuantity !== -1);
+        
+        setCartItems(newProductsInCart);
         setProductsInCart(newProductsInCart);
         localStorage.setItem('cart', JSON.stringify(newProductsInCart));
     }
@@ -40,7 +59,7 @@ const Cart: React.FC = () => {
                 <div className='cart--items'>
                     <div className='cart--items-title'>
                         <div className='cart--items-total'>Review Item And Shipping</div>
-                        <div className='cart--items-total'>Total price: $9</div>
+                        <div className='cart--items-total'>Total price: ${totalPrice}</div>
                     </div>
                     {showProducts}
                     <div className='cart--items-expand' onClick={expandCart}>

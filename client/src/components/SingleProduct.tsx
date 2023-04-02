@@ -15,7 +15,20 @@ const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
   const addToCart = () => {
     const cartItems: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
     const newItem: Product = product;
-    const newCart: Product[] = [...cartItems, newItem];
+    const isInCart: boolean = cartItems.some((item) => item._id === newItem._id);
+
+    const newCart: Product[] = isInCart ? (
+      cartItems.map(item => {
+        if(item._id === newItem._id) {
+          return {...item, cartQuantity: item.cartQuantity + 1}
+        } else {
+          return item;
+        }
+      })
+    ) : (
+      [...cartItems, {...newItem, cartQuantity: 1}]
+    );
+
     localStorage.setItem('cart', JSON.stringify(newCart));
     setCartItems(newCart);
 

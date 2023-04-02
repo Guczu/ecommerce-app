@@ -16,11 +16,11 @@ const CartItem: React.FC<Props> = ({ product, removeItem }) => {
         <div className='cartitem--product-info'>
             <div className='cartitem--name-price'>
                 <span className='cartitem--name'>{product.name}</span>
-                <span className='cartitem--price'>${product.price}</span>
+                <span className='cartitem--price'>${product.price * product.cartQuantity}</span>
             </div>
             <div className='cartitem--color-amount'>
                 <span className='cartitem--color'>Color: {product.color}</span>
-                <span className='cartitem--amount'>Quantity: 1</span>
+                <span className='cartitem--amount'>Quantity: {product.cartQuantity}</span>
             </div>
             <div className='cartitem--delete' onClick={() => removeItem(product._id)}>
                 <div className='cartitem--delete-icon'>
