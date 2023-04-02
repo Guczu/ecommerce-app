@@ -7,12 +7,12 @@ import { Product } from '../interfaces'
 
 interface Props {
   products: Product[];
+  setCartItems: React.Dispatch<React.SetStateAction<Product[]>>;
 }
 
-const Home: React.FC<Props> = ({ products }) => {
+const Home: React.FC<Props> = ({ products, setCartItems }) => {
   return (
     <div className='home--container'>
-        <Navbar />
         <div className='home--banner'>
             <div className='home--banner-text'>
                 <span>Grab Upto 50% Off On</span>
@@ -28,7 +28,7 @@ const Home: React.FC<Props> = ({ products }) => {
     <Filters />
 
     {/* products */}
-    <Products products={products}/>
+    <Products products={products} setCartItems={setCartItems} />
 
     {/* footer */}
     </div>

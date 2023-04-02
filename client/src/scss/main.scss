@@ -16,6 +16,7 @@ body {
 
 .App {
     @include flexMode();
+    flex-direction: column;
     width: 95vw;
 }
 

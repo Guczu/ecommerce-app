@@ -4,9 +4,18 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import { Product } from './interfaces';
 import Cart from './components/Cart';
+import Navbar from './components/Navbar';
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [cartAmount, setCartAmount] = useState<number>(0);
+
+  useEffect(() => {
+      const cartItems: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
+      setCartItems(cartItems);
+      cartItems && setCartAmount(cartItems.length)
+  }, [cartItems])
 
   useEffect(() => {
     async function fetchProducts() {
@@ -18,8 +27,9 @@ const App: React.FC = () => {
 
   return (
     <div className='App'>
+      <Navbar cartAmount={cartAmount}/>
       <Routes>
-        <Route path="/" element={<Home products={products}/>} />
+        <Route path="/" element={<Home products={products} setCartItems={setCartItems}/>} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>

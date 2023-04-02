@@ -4,11 +4,12 @@ import { Product } from '../interfaces'
 
 interface Props {
   products: Product[];
+  setCartItems: React.Dispatch<React.SetStateAction<Product[]>>;
 }
 
-const Products: React.FC<Props> = ({ products }) => {
+const Products: React.FC<Props> = ({ products, setCartItems }) => {
   const showProducts = products.map((product, i) => (
-    <SingleProduct key={i} product={product} />
+    <SingleProduct key={i} product={product} setCartItems={setCartItems} />
   ))
 
   return (

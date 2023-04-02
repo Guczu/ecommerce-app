@@ -6,17 +6,13 @@ import { BsFillBagFill } from 'react-icons/bs'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { RxPerson } from 'react-icons/rx'
 import { AiOutlineHeart } from 'react-icons/ai'
-import { Product } from '../interfaces'
 import { Link } from 'react-router-dom'
 
-const Navbar: React.FC = () => {
-    const [cartAmount, setCartAmount] = useState<number>(0);
+interface Props {
+    cartAmount: number;
+}
 
-    useEffect(() => {
-        const cartItems: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
-        cartItems && setCartAmount(cartItems.length)
-    },[])
-
+const Navbar: React.FC<Props> = ({ cartAmount }) => {
   return (
     <header className='navbar--container'>
         <Link to="/" className='navbar--logo'>

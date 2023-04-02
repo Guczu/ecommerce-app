@@ -6,9 +6,10 @@ import AddedToCartPopup from './AddedToCartPopup';
 
 interface Props {
   product: Product;
+  setCartItems: React.Dispatch<React.SetStateAction<Product[]>>;
 }
 
-const SingleProduct: React.FC<Props> = ({ product }) => {
+const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
   const [cartPopupTrigger, setCartPopupTrigger] = useState<boolean>(false);
 
   const addToCart = () => {
@@ -16,6 +17,7 @@ const SingleProduct: React.FC<Props> = ({ product }) => {
     const newItem: Product = product;
     const newCart: Product[] = [...cartItems, newItem];
     localStorage.setItem('cart', JSON.stringify(newCart));
+    setCartItems(newCart);
 
     setCartPopupTrigger(!cartPopupTrigger);
   }

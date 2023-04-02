@@ -34,7 +34,6 @@ const Cart: React.FC = () => {
 
   return (
     <div className='cart--container'>
-        <Navbar />
         {productsInCart.length !== 0 ? (
             <div className='cart--wrapper'>
             <div className='cart--left-wrapper'>
