@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from './Navbar'
 import CartItem from './CartItem'
-import { Product } from '../interfaces'
+import { validateForm } from '../utils/validateCartForm'
+import { Product, UserData, FormErrors } from '../interfaces'
 import { HiOutlineShoppingBag } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 import { MdOutlineExpandMore } from 'react-icons/md'
@@ -16,6 +16,17 @@ const Cart: React.FC<Props> = ({ cartItems, setCartItems }) => {
     const [productsInCart, setProductsInCart] = useState<Product[] | []>([]);
     const [expandCartItems, setExpandCartItems] = useState<boolean>(false);
     const [totalPrice, setTotalPrice] = useState<number>(0);
+    const [couponCode, setCouponCode] = useState<string>('');
+    const [formErrors, setFormErrors] = useState<FormErrors>({});
+    const [editUserData, setEditUserData] = useState<boolean>(false);
+    const [userData, setUserData] = useState<UserData>({
+        name: 'Name',
+        address: 'Address',
+        city: 'City',
+        zipcode: 0,
+        mobile: 0,
+        email: 'Email'
+    });
 
     useEffect(() => {
         setProductsInCart(cartItems);
@@ -45,6 +56,25 @@ const Cart: React.FC<Props> = ({ cartItems, setCartItems }) => {
 
     const expandCart = () => {
         setExpandCartItems(!expandCartItems);
+    }
+
+    const editForm = () => {
+        const errors = validateForm(userData);
+        if(editUserData) {
+            if(errors === null) {
+                setUserData(userData);
+                setFormErrors({});
+                setEditUserData(!editUserData);
+            } else {
+                setFormErrors(errors);
+            }
+        } else {
+            setEditUserData(!editUserData);
+        }
+    }
+
+    const changeUserData = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setUserData({...userData, [e.target.name]: e.target.value})
     }
 
     const showProducts = productsInCart.slice(0, expandCartItems === false ? 2 : productsInCart.length).map((product, i) => (
@@ -83,45 +113,71 @@ const Cart: React.FC<Props> = ({ cartItems, setCartItems }) => {
                 <div className='cart--delivery-info'>
                     <div className='cart--title-label'>
                         <span>Delivery information</span>
-                        <button>Edit Information</button>
+                        <button onClick={editForm}>Edit Information</button>
                     </div>
                     <div className='cart--personal-info'>
                         <div className='cart--personal-label'>Name:</div>
-                        <span>Information</span>
+                        {editUserData ? (
+                            <input className='cart--edit-input' name='name' value={userData.name} placeholder='Your name' onChange={(e) => changeUserData(e)}></input>
+                        ) : (
+                            <span>{userData.name}</span>
+                        )}
                     </div>
                     
                     <div className='cart--personal-info'>
                         <div className='cart--personal-label'>Address:</div>
-                        <span>Information</span>
+                        {editUserData ? (
+                            <input className='cart--edit-input' name='address' value={userData.address} placeholder='Your address' onChange={(e) => changeUserData(e)}></input>
+                        ) : (
+                            <span>{userData.address}</span>
+                        )}
                     </div>
                     
                     <div className='cart--personal-info'>
                         <div className='cart--personal-label'>City:</div>
-                        <span>Information</span>
+                        {editUserData ? (
+                            <input className='cart--edit-input' name='city' value={userData.city} placeholder='Your city' onChange={(e) => changeUserData(e)}></input>
+                        ) : (
+                            <span>{userData.city}</span>
+                        )}
                     </div>
                     
                     <div className='cart--personal-info'>
                         <div className='cart--personal-label'>Zip Code:</div>
-                        <span>Information</span>
+                        {editUserData ? (
+                            <input className='cart--edit-input' name='zipcode' value={userData.zipcode} placeholder='Your zipcode' onChange={(e) => changeUserData(e)}></input>
+                        ) : (
+                            <span>{userData.zipcode}</span>
+                        )}
                     </div>
                     
                     <div className='cart--personal-info'>
                         <div className='cart--personal-label'>Mobile:</div>
-                        <span>Information</span>
+                        {editUserData ? (
+                            <input className='cart--edit-input' name='mobile' value={userData.mobile?.toString()} placeholder='Your mobile' onChange={(e) => changeUserData(e)}></input>
+                        ) : (
+                            <span>{userData.mobile}</span>
+                        )}
                     </div>
                     
                     <div className='cart--personal-info'>
                         <div className='cart--personal-label'>Email:</div>
-                        <span>Information</span>
+                        {editUserData ? (
+                            <input className='cart--edit-input' name='email' value={userData.email} placeholder='Your email' onChange={(e) => changeUserData(e)}></input>
+                        ) : (
+                            <span>{userData.email}</span>
+                        )}
                     </div>
-                    
+                    <div className='cart--delivery-errors'>
+                            {Object.entries(formErrors).map(([key, value]) => <span className='cart--delivery-error'>{value}</span>)}
+                    </div>
                 </div>
             </div>
             <div className='cart--right-wrapper'>
                 <div className='cart--summary'>
                     <span>Order Summary</span>
                     <div className='cart--discount-code'>
-                        <input type="text" placeholder="Enter Coupon Code"></input>
+                        <input type="text" placeholder="Enter Coupon Code" onChange={e => setCouponCode(e.target.value)}></input>
                         <button>Apply coupon</button>
                     </div>
                     <span>Payment Details</span>

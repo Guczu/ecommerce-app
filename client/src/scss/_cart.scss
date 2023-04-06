@@ -1,3 +1,5 @@
+@import './media-queries';
+
 .cart--container {
     @include flexMode();
     flex-direction: column;
@@ -6,6 +8,22 @@
 
 .cart--wrapper {
     display: flex;
+    @include phone {
+        flex-direction: column;
+        align-items: center;
+    }
+    @include tablet {
+        flex-direction: column;
+        align-items: center;
+    }
+    @include laptop {
+        flex-direction: column;
+        align-items: center;
+    }
+    @include sm-desktop {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .cart--left-wrapper {
@@ -27,6 +45,19 @@
     margin: 10px;
     max-width: 1100px;
     position: relative;
+
+    @include phone {
+        width: 80vw;
+    }
+    @include tablet {
+        width: 80vw;
+    }
+    @include laptop {
+        width: 80vw;
+    }
+    @include sm-desktop {
+        width: 80vw;
+    }
 }
 
 .cart--items-title {
@@ -46,6 +77,19 @@
     border-radius: 8px;
     margin: 10px;
     max-width: 1100px;
+
+    @include phone {
+        width: 80vw;
+    }
+    @include tablet {
+        width: 80vw;
+    }
+    @include laptop {
+        width: 80vw;
+    }
+    @include sm-desktop {
+        width: 80vw;
+    }
 }
 
 .cart--title-label {
@@ -77,7 +121,6 @@
         font-size: 1rem;
         color: $dark-gray;
         font-weight: 200;
-
     }
 }
 
@@ -85,6 +128,7 @@
     min-width: 150px;
     font-size: 1.2rem;
     font-weight: 500;
+    margin: 5px;
 }
 
 .cart--summary {
@@ -103,6 +147,19 @@
 
     span {
         margin-bottom: 20px;
+    }
+
+    @include phone {
+        width: 80vw;
+    }
+    @include tablet {
+        width: 80vw;
+    }
+    @include laptop {
+        width: 80vw;
+    }
+    @include sm-desktop {
+        width: 80vw;
     }
 }
 
@@ -244,4 +301,25 @@
     bottom: 0;
     right: 0;
     padding: 20px;
+}
+
+.cart--edit-input {
+    border-radius: 30px;
+    padding: 6px;
+    width: 50%;
+    border: none;
+    background-color: $dark-white;
+    color: $gray;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.cart--delivery-error {
+    color: rgb(204, 29, 29);
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    font-weight: 300;
 }
