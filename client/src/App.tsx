@@ -27,7 +27,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     async function fetchProducts() {
-      const products = await axios.get('http://localhost:4000/products');
+      const products = await axios.get('https://ecommerce-app-server.vercel.app/products');
       setProducts(products.data);
     }
     fetchProducts();
