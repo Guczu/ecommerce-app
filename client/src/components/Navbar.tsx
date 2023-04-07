@@ -30,7 +30,7 @@ const Navbar: React.FC<Props> = ({ cartAmount }) => {
             <div className='search--icon'><AiOutlineSearch /></div>
         </div>
         <div className='navbar--account'><RxPerson /></div>
-        <div className='navbar--favourites'><AiOutlineHeart /></div>
+        <Link to='/favourites' className='navbar--favourites'><AiOutlineHeart /></Link>
         <Link to="cart" className='navbar--cart'>
             {cartAmount !== 0 && (
                 <div className='navbar--cart-amount'>
@@ -54,7 +54,7 @@ const Navbar: React.FC<Props> = ({ cartAmount }) => {
                 <a href='#'>Deals</a>
                 <a href='#'>What's New</a>
                 <a href='#'>Delivery</a>
-                <a href='#'>Favourites</a>
+                <Link to='/favourites'>Favourites</Link>
                 <Link to='/cart'>Cart</Link>
                 <a href='#'>Account</a>
             </div>

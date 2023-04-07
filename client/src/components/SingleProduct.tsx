@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { AiOutlineHeart } from 'react-icons/ai'
-import { AiFillStar } from 'react-icons/ai'
+import { AiFillStar, AiFillHeart } from 'react-icons/ai'
 import { Product } from '../interfaces'
 import AddedToCartPopup from './AddedToCartPopup';
 
@@ -11,7 +11,8 @@ interface Props {
 
 const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
   const [cartPopupTrigger, setCartPopupTrigger] = useState<boolean>(false);
-  
+  const [isFavourite, setIsFavourite] = useState<boolean>(false);
+
   const addToCart = () => {
     const cartItems: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
     const newItem: Product = product;
@@ -25,14 +26,36 @@ const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
           return item;
         }
       })
-    ) : (
-      [...cartItems, {...newItem, cartQuantity: 1}]
+      ) : (
+        [...cartItems, {...newItem, cartQuantity: 1}]
     );
 
     localStorage.setItem('cart', JSON.stringify(newCart));
     setCartItems(newCart);
-
     setCartPopupTrigger(!cartPopupTrigger);
+  }
+
+  const handleFavourites = () => {
+    const favouriteItems: Product[] = JSON.parse(localStorage.getItem('favourites') || '[]');
+    const newItem: Product = product;
+    const isInFavourites: boolean = favouriteItems.some((item) => item._id === newItem._id);
+    let newFavourites: Product[];
+
+    if(!isInFavourites) {
+      newFavourites = [...favouriteItems, newItem];
+      setIsFavourite(true);
+    } else {
+      newFavourites = favouriteItems.map(item => {
+        if(item._id === newItem._id) {
+          setIsFavourite(false);
+          return {...item, cartQuantity: -1};
+        } else {
+          return item;
+        }
+      }).filter(item => item.cartQuantity !== -1);
+    }
+
+    localStorage.setItem('favourites', JSON.stringify(newFavourites));
   }
 
   useEffect(() => {
@@ -43,12 +66,24 @@ const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
     return () => clearTimeout(timer);
   },[cartPopupTrigger])
 
+  useEffect(() => {
+    const favouriteItems: Product[] = JSON.parse(localStorage.getItem('favourites') || '[]');
+    const newItem: Product = product;
+    const isInFavourites: boolean = favouriteItems.some((item) => item._id === newItem._id);
+
+    isInFavourites ? setIsFavourite(true) : setIsFavourite(false);
+  }, [product])
+
   return (
     <>
     {cartPopupTrigger && <AddedToCartPopup />}
     <div className='products--tile'>
-      <div className='products--like'>
-        <AiOutlineHeart />
+      <div className='products--like' onClick={handleFavourites}>
+        {isFavourite ? (
+          <AiFillHeart />
+        ) : (
+          <AiOutlineHeart />
+        )}
       </div>
       <div className='products--thumbnail'>
         <img src={product.images[0]}></img>

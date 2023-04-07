@@ -5,6 +5,7 @@ import Home from './components/Home';
 import { Product } from './interfaces';
 import Cart from './components/Cart';
 import Navbar from './components/Navbar';
+import Favourites from './components/Favourites';
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -38,6 +39,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home products={products} setCartItems={setCartItems}/>} />
         <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
+        <Route path="/favourites" element={<Favourites setCartItems={setCartItems} />} />
       </Routes>
     </div>
   )

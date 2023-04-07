@@ -9,10 +9,15 @@
 @import './cart';
 @import './cartitem';
 @import './similaritemsslider';
+@import './favourites';
 
 body {
     margin: 0;
     padding: 0;
+}
+
+html {
+    overflow-y:scroll;
 }
 
 .App {

@@ -33,13 +33,13 @@
     span {
         font-size: 1.1rem;
         font-weight: 500;
-        color: $dark-gray;
+        color: $green;
         padding: 1vw;
     }
 
     span:hover {
         cursor: pointer;
-        filter: brightness(1.5)
+        color: $light-green;
     }
 
     @include phone {
@@ -176,9 +176,11 @@
 .navbar--favourites {
     font-size: 32px;
     margin-left: 4px;
+    color: black;
 
     &:hover {
         cursor: pointer;
+        color: rgb(206, 33, 33);
     }
 
     @include phone {
