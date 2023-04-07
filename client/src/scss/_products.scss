@@ -135,3 +135,24 @@
         color: $dark-white;
     }
 }
+
+.products--pagination {
+    width: 80vw;
+    @include flexMode();
+    margin-top: 10px;
+}
+
+.products--pagination-button {
+    background-color: $light-gray;
+    border: none;
+    border-radius: 3px;
+    font-family: 'Exo', sans-serif;
+    font-weight: 500;
+    margin: 5px;
+    width: 30px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secondary-light-gray;
+    }
+}

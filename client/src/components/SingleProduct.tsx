@@ -11,7 +11,7 @@ interface Props {
 
 const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
   const [cartPopupTrigger, setCartPopupTrigger] = useState<boolean>(false);
-
+  
   const addToCart = () => {
     const cartItems: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
     const newItem: Product = product;

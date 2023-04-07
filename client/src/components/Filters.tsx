@@ -7,7 +7,7 @@ const Filters: React.FC = () => {
   return (
     <div className='filters--container'>
       <div className='filters--wrapper'>
-        <SingleFilter name={"Headphone Type"}/>
+        <SingleFilter name={"Category"}/>
         <SingleFilter name={"Price"}/>
         <SingleFilter name={"Review"}/>
         <SingleFilter name={"Color"}/>

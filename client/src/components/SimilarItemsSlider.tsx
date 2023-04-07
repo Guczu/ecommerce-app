@@ -22,8 +22,6 @@ const SimilarItemsSlider: React.FC<Props> = ({ products, setCartItems }) => {
             spaceBetween={0}
             slidesPerView={5}
             scrollbar={{ draggable: true, dragClass: 'swiper-scrollbar-drag' }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log('slide change')}
             className='similaritems--products'
             centeredSlides={false}
             centerInsufficientSlides={true}

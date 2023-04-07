@@ -4,12 +4,12 @@ import { HiOutlineShoppingBag } from 'react-icons/hi'
 const AddedToCartPopup: React.FC = () => {
   return (
     <div className='addedtocart--container'>
-        <div className='addedtocart--icon'>
-            <HiOutlineShoppingBag />
-        </div>
-        <div className='addedtocart--info'>
-            <span>Added!</span>
-        </div>
+      <div className='addedtocart--icon'>
+        <HiOutlineShoppingBag />
+      </div>
+      <div className='addedtocart--info'>
+        <span>Added!</span>
+      </div>
     </div>
   )
 }
