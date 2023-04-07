@@ -3,6 +3,7 @@ import bannerImage from '../images/banner-image.png'
 import Filters from './Filters'
 import Products from './Products'
 import { Product } from '../interfaces'
+import SimilarItemsSlider from './SimilarItemsSlider'
 
 interface Props {
   products: Product[];
@@ -28,6 +29,9 @@ const Home: React.FC<Props> = ({ products, setCartItems }) => {
 
     {/* products */}
     <Products products={products} setCartItems={setCartItems} />
+
+    {/* similar items slider */}
+    <SimilarItemsSlider products={products} setCartItems={setCartItems}/>
 
     {/* footer */}
     </div>
