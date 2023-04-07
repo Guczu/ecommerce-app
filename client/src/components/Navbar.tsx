@@ -49,6 +49,15 @@ const Navbar: React.FC<Props> = ({ cartAmount }) => {
         </Link>
         <div className='navbar--hamburger'>
             <RxHamburgerMenu />
+            <div className='navbar--hamburger-dropdown'>
+                <a href='#'>Categories</a>
+                <a href='#'>Deals</a>
+                <a href='#'>What's New</a>
+                <a href='#'>Delivery</a>
+                <a href='#'>Favourites</a>
+                <Link to='/cart'>Cart</Link>
+                <a href='#'>Account</a>
+            </div>
         </div>
     </header>
   )

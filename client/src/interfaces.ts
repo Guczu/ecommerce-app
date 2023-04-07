@@ -1,5 +1,3 @@
-import { StringLiteral } from "typescript";
-
 export interface Product {
     _id: string;
     name: string;

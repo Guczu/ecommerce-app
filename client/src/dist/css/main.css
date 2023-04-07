@@ -151,37 +151,6 @@
   }
 }
 
-.navbar--hamburger {
-  display: none;
-  position: relative;
-  font-size: 32px;
-  top: 5px;
-  margin-left: 2vw;
-}
-.navbar--hamburger:hover {
-  cursor: pointer;
-}
-@media screen and (min-width: 0px) and (max-width: 480px) {
-  .navbar--hamburger {
-    display: block;
-  }
-}
-@media screen and (min-width: 480px) and (max-width: 576px) {
-  .navbar--hamburger {
-    display: block;
-  }
-}
-@media screen and (min-width: 576px) and (max-width: 768px) {
-  .navbar--hamburger {
-    display: block;
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 992px) {
-  .navbar--hamburger {
-    display: block;
-  }
-}
-
 .navbar--cart-amount {
   display: flex;
   justify-content: center;
@@ -249,6 +218,79 @@
 @media screen and (min-width: 768px) and (max-width: 992px) {
   .navbar--favourites {
     display: none;
+  }
+}
+
+.navbar--hamburger {
+  display: none;
+  position: relative;
+  font-size: 32px;
+  top: 5px;
+  margin-left: 2vw;
+}
+.navbar--hamburger:hover {
+  cursor: pointer;
+}
+.navbar--hamburger:hover .navbar--hamburger-dropdown {
+  display: flex;
+}
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  .navbar--hamburger {
+    display: block;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 576px) {
+  .navbar--hamburger {
+    display: block;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .navbar--hamburger {
+    display: block;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .navbar--hamburger {
+    display: block;
+  }
+}
+
+.navbar--hamburger-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  background-color: white;
+  padding: 25px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 1rem;
+  width: 100px;
+  display: none;
+}
+.navbar--hamburger-dropdown a {
+  text-decoration: none;
+  color: #0D4530;
+  margin-bottom: 5px;
+}
+.navbar--hamburger-dropdown a:hover {
+  color: #228f22;
+}
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  .navbar--hamburger-dropdown {
+    left: -60px;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 576px) {
+  .navbar--hamburger-dropdown {
+    left: -60px;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .navbar--hamburger-dropdown {
+    left: -60px;
   }
 }
 
