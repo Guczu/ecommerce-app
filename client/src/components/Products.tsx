@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import SingleProduct from './SingleProduct'
 import { Product } from '../interfaces'
 
@@ -11,17 +11,22 @@ const Products: React.FC<Props> = ({ products, setCartItems }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [productsPerPage, setProductsPerPage] = useState<number>(10);
   const totalPages = Math.ceil(products.length / productsPerPage);
+  const scrollToProducts = useRef<HTMLInputElement>(null);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
+
+  useEffect(() => {
+    scrollToProducts?.current?.scrollIntoView({behavior: 'smooth'});
+  }, [currentPage])
 
   const showProducts = products.slice((currentPage-1)*productsPerPage,currentPage*productsPerPage).map((product, i) => (
     <SingleProduct key={i} product={product} setCartItems={setCartItems} />
   ))
 
   return (
-    <div className='products--container'>
+    <div className='products--container' ref={scrollToProducts}>
         <span className='products--header'>Products For You!</span>
         <div className='products--listofproducts'>
           {showProducts}

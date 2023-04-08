@@ -1252,6 +1252,12 @@
   background-color: #bae5d5 !important;
 }
 
+.swiper-slide {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
 .favourites--container {
   width: 80vw;
   margin-top: 40px;

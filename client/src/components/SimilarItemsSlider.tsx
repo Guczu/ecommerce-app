@@ -21,10 +21,10 @@ const SimilarItemsSlider: React.FC<Props> = ({ products, setCartItems }) => {
             modules={[Scrollbar]}
             spaceBetween={0}
             slidesPerView={5}
+            slidesPerGroup={1}
             scrollbar={{ draggable: true, dragClass: 'swiper-scrollbar-drag' }}
             className='similaritems--products'
-            centeredSlides={false}
-            centerInsufficientSlides={true}
+            centeredSlidesBounds={true}
             breakpoints={{
                 0: {
                   slidesPerView: 1,
@@ -45,7 +45,7 @@ const SimilarItemsSlider: React.FC<Props> = ({ products, setCartItems }) => {
         >
             {products.map((item, i) => {
                 return (
-                    <SwiperSlide key={i} className='similaritems--product'>
+                    <SwiperSlide key={i}>
                         <SingleProduct product={item} setCartItems={setCartItems}/>
                     </SwiperSlide>
                 )

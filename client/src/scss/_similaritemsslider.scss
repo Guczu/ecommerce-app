@@ -28,12 +28,16 @@
 }
 
 .similaritems--products {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexMode();
     margin-top: 30px;
 }
 
 .swiper-scrollbar-drag {
     background-color: $button-text !important;
+}
+
+.swiper-slide {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
