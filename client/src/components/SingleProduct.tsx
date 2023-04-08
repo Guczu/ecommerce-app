@@ -86,7 +86,7 @@ const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
         )}
       </div>
       <div className='products--thumbnail'>
-        <img src={product.images[0]}></img>
+        <img src={product.images[0]} alt={product.name}></img>
       </div>
       <div className='products--info'>
           <span className='products--name'>{product.name}</span>

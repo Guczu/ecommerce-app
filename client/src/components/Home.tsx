@@ -20,7 +20,7 @@ const Home: React.FC<Props> = ({ products, setCartItems }) => {
                 <button>Buy Now</button>
             </div>
             <div className='home--banner-image'>
-                <img src={bannerImage}></img>
+                <img src={bannerImage} alt="Banner"></img>
             </div>
         </div>
 

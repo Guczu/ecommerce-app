@@ -11,7 +11,7 @@ const CartItem: React.FC<Props> = ({ product, removeItem }) => {
   return (
     <div className='cartitem--container'>
         <div className='cartitem--thumbnail'>
-            <img src={product.images[0]}></img>
+            <img src={product.images[0]} alt={product.name}></img>
         </div>
         <div className='cartitem--product-info'>
             <div className='cartitem--name-price'>

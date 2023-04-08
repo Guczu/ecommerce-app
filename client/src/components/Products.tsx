@@ -9,6 +9,7 @@ interface Props {
 
 const Products: React.FC<Props> = ({ products, setCartItems }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
   const [productsPerPage, setProductsPerPage] = useState<number>(10);
   const totalPages = Math.ceil(products.length / productsPerPage);
   const scrollToProducts = useRef<HTMLInputElement>(null);
@@ -17,13 +18,16 @@ const Products: React.FC<Props> = ({ products, setCartItems }) => {
     setCurrentPage(page);
   };
 
-  useEffect(() => {
-    scrollToProducts?.current?.scrollIntoView({behavior: 'smooth'});
-  }, [currentPage])
-
   const showProducts = products.slice((currentPage-1)*productsPerPage,currentPage*productsPerPage).map((product, i) => (
     <SingleProduct key={i} product={product} setCartItems={setCartItems} />
   ))
+
+  useEffect(() => {
+    if(isMounted) {
+      scrollToProducts?.current?.scrollIntoView({behavior: 'smooth'});
+    }
+    setIsMounted(true);
+  }, [currentPage])
 
   return (
     <div className='products--container' ref={scrollToProducts}>

@@ -16,7 +16,7 @@ const Navbar: React.FC<Props> = ({ cartAmount }) => {
   return (
     <header className='navbar--container'>
         <Link to="/" className='navbar--logo'>
-            <img src={logo}></img>
+            <img src={logo} alt="Shopping cart logo"></img>
             <span>Shopcart</span>
         </Link>
         <div className='navbar--links'>
@@ -26,12 +26,13 @@ const Navbar: React.FC<Props> = ({ cartAmount }) => {
             <span>Delivery</span>
         </div>
         <div className='navbar--search'>
-            <input type="input" placeholder='Search Product'></input>
+            <label htmlFor="searchInput"></label>
+            <input type="input" id="searchInput" placeholder='Search Product'></input>
             <div className='search--icon'><AiOutlineSearch /></div>
         </div>
         <div className='navbar--account'><RxPerson /></div>
         <Link to='/favourites' className='navbar--favourites'><AiOutlineHeart /></Link>
-        <Link to="cart" className='navbar--cart'>
+        <Link to="/cart" className='navbar--cart'>
             {cartAmount !== 0 && (
                 <div className='navbar--cart-amount'>
                     {cartAmount}
