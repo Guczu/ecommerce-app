@@ -41,7 +41,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Home products={products} setCartItems={setCartItems}/>} />
         <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
         <Route path="/favourites" element={<Favourites setCartItems={setCartItems} />} />
-        <Route path="/product/:id" element={<ProductDetails products={products} />} />
+        <Route path="/product/:id" element={<ProductDetails products={products} setCartItems={setCartItems} />} />
         
       </Routes>
     </div>

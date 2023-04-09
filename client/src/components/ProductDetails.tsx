@@ -4,13 +4,18 @@ import { useParams } from 'react-router-dom';
 import { AiFillStar } from 'react-icons/ai';
 import { TbTruckDelivery } from 'react-icons/tb';
 import { MdOutlineAssignmentReturned } from 'react-icons/md';
+import addToCart from '../utils/addToCart';
+import AddedToCartPopup from './AddedToCartPopup';
 
 interface Props {
     products: Product[];
+    setCartItems: React.Dispatch<React.SetStateAction<Product[]>>;
 }
 
-const ProductDetails: React.FC<Props> = ({ products }) => {
+const ProductDetails: React.FC<Props> = ({ products, setCartItems }) => {
     const [product, setProduct] = useState<Product | null>(null);
+    const [itemCounter, setItemCounter] = useState<number>(0);
+    const [cartPopupTrigger, setCartPopupTrigger] = useState<boolean>(false);
     const {id} = useParams();
 
     useEffect(() => {
@@ -18,7 +23,31 @@ const ProductDetails: React.FC<Props> = ({ products }) => {
         foundProduct && setProduct(foundProduct);
     }, [products])
 
+    const handleCounter = (operation: boolean) => {
+        if(product) {
+            operation ? itemCounter < product.amount && setItemCounter(itemCounter + 1) : itemCounter > 0 && setItemCounter(itemCounter - 1);
+        }
+    }
+
+    const addProductToCart = () => {
+        if(product) {
+            const newCart: Product[] = addToCart(product, itemCounter);
+            setCartItems(newCart);
+            setCartPopupTrigger(!cartPopupTrigger);
+        }
+    }
+
+    useEffect(() => {
+        const timer: NodeJS.Timeout = setTimeout(() => {
+          setCartPopupTrigger(false);
+        }, 3000);
+    
+        return () => clearTimeout(timer);
+      },[cartPopupTrigger])
+
   return (
+    <>
+    {cartPopupTrigger && itemCounter !== 0 && <AddedToCartPopup />}
     <div className='productdetails--container'>
         <div className='productdetails--wrapper'>
             <div className='productdetails--wrapper-left'>
@@ -45,14 +74,14 @@ const ProductDetails: React.FC<Props> = ({ products }) => {
                 <div className='productdetails--colors'></div>
                 <hr></hr>
                 <div className='productdetails--quantity'>
-                    <button className='productdetails--quantity-sub'>-</button>
-                    <div className='productdetails--quantity-amount'>0</div>
-                    <button className='productdetails--quantity-add'>+</button>
+                    <button className='productdetails--quantity-sub' onClick={() => handleCounter(false)}>-</button>
+                    <div className='productdetails--quantity-amount'>{itemCounter}</div>
+                    <button className='productdetails--quantity-add' onClick={() => handleCounter(true)}>+</button>
                     <span className='productdetails--quantity-info'>Only <span> {product && product.amount} items</span> Left!</span>
                 </div>
                 <div className='productdetails--buy-buttons'>
                     <button className='productdetails--buy-now'>Buy Now</button>
-                    <button className='productdetails--buy-addtocart'>Add to Cart</button>
+                    <button className='productdetails--buy-addtocart' onClick={addProductToCart}>Add to Cart</button>
                 </div>
                 <div className='productdetails--delivery'>
                     <div className='productdetails--delivery-header'>
@@ -75,6 +104,7 @@ const ProductDetails: React.FC<Props> = ({ products }) => {
             </div>
         </div>
     </div>
+    </>
   )
 }
 

@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.green-button {
+  background-color: #003927 !important;
+  color: #ebebeb;
+}
+
 .navbar--container {
   font-family: "Exo", sans-serif;
   display: flex;
@@ -636,9 +641,6 @@
   margin: 5px;
   position: relative;
 }
-.products--tile:hover {
-  cursor: pointer;
-}
 
 .products--like {
   position: absolute;
@@ -664,6 +666,9 @@
 }
 .products--thumbnail img {
   width: 80%;
+}
+.products--thumbnail:hover {
+  cursor: pointer;
 }
 
 .products--info {
@@ -734,11 +739,12 @@
 .products--pagination-button {
   background-color: #ebebeb;
   border: none;
-  border-radius: 3px;
+  border-radius: 30px;
   font-family: "Exo", sans-serif;
   font-weight: 500;
   margin: 5px;
-  width: 30px;
+  width: 40px;
+  height: 40px;
 }
 .products--pagination-button:hover {
   cursor: pointer;
@@ -1628,7 +1634,7 @@ hr {
 }
 
 .productdetails--quantity-amount {
-  width: 20px;
+  width: auto;
   height: 40px;
   background-color: #f6f6f6;
   display: flex;

@@ -43,10 +43,6 @@
     font-weight: 600;
     margin: 5px;
     position: relative;
-
-    &:hover {
-        cursor: pointer;
-    }
 }
 
 .products--like {
@@ -74,6 +70,10 @@
 
     img {
         width: 80%;
+    }
+
+    &:hover {
+        cursor: pointer;
     }
 }
 
@@ -146,11 +146,12 @@
 .products--pagination-button {
     background-color: $light-gray;
     border: none;
-    border-radius: 3px;
+    border-radius: 30px;
     font-family: 'Exo', sans-serif;
     font-weight: 500;
     margin: 5px;
-    width: 30px;
+    width: 40px;
+    height: 40px;
 
     &:hover {
         cursor: pointer;

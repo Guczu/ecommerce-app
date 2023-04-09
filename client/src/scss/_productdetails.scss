@@ -230,7 +230,7 @@ hr {
 }
 
 .productdetails--quantity-amount {
-    width: 20px;
+    width: auto;
     height: 40px;
     background-color: $secondary-light-gray;
     @include flexMode();

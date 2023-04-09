@@ -37,7 +37,7 @@ const Products: React.FC<Props> = ({ products, setCartItems }) => {
         </div>
         <div className='products--pagination'>
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <button key={page} className='products--pagination-button' onClick={() => handlePageChange(page)}>
+            <button key={page} className={currentPage === page ? 'products--pagination-button green-button' : 'products--pagination-button'} onClick={() => handlePageChange(page)}>
               {page}
             </button>
           ))}

@@ -4,6 +4,7 @@ import { AiFillStar, AiFillHeart } from 'react-icons/ai'
 import { Product } from '../interfaces'
 import AddedToCartPopup from './AddedToCartPopup';
 import { useNavigate } from 'react-router-dom';
+import addToCart from '../utils/addToCart';
 
 interface Props {
   product: Product;
@@ -15,24 +16,8 @@ const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
   const [isFavourite, setIsFavourite] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  const addToCart = () => {
-    const cartItems: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
-    const newItem: Product = product;
-    const isInCart: boolean = cartItems.some((item) => item._id === newItem._id);
-
-    const newCart: Product[] = isInCart ? (
-      cartItems.map(item => {
-        if(item._id === newItem._id) {
-          return {...item, cartQuantity: item.cartQuantity + 1}
-        } else {
-          return item;
-        }
-      })
-      ) : (
-        [...cartItems, {...newItem, cartQuantity: 1}]
-    );
-
-    localStorage.setItem('cart', JSON.stringify(newCart));
+  const addProductToCart = () => {
+    const newCart: Product[] = addToCart(product, 1);
     setCartItems(newCart);
     setCartPopupTrigger(!cartPopupTrigger);
   }
@@ -79,7 +64,7 @@ const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
   return (
     <>
     {cartPopupTrigger && <AddedToCartPopup />}
-    <div className='products--tile' onClick={() => navigate(`/product/${product._id}`)}>
+    <div className='products--tile'>
       <div className='products--like' onClick={handleFavourites}>
         {isFavourite ? (
           <AiFillHeart />
@@ -87,7 +72,7 @@ const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
           <AiOutlineHeart />
         )}
       </div>
-      <div className='products--thumbnail'>
+      <div className='products--thumbnail' onClick={() => navigate(`/product/${product._id}`)}>
         <img src={product.images[0]} alt={product.name}></img>
       </div>
       <div className='products--info'>
@@ -107,7 +92,7 @@ const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
         </div>
         <span>(121)</span>
       </div>
-      <button className='products--button' onClick={addToCart}>Add to Cart</button>
+      <button className='products--button' onClick={addProductToCart}>Add to Cart</button>
     </div>
     </>
   )

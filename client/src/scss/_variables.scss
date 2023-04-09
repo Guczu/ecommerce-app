@@ -14,6 +14,11 @@ $secondary-light-gray: #f6f6f6;
 $light-green: #228f22;
 $light-red: #eb3b52;
 
+.green-button {
+    background-color: $green-button !important;
+    color: $light-gray;
+}
+
 @mixin flexMode() {
     display: flex;
     justify-content: center;
