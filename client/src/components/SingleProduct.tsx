@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { AiOutlineHeart } from 'react-icons/ai'
-import { AiFillStar, AiFillHeart } from 'react-icons/ai'
-import { Product } from '../interfaces'
+import React, { useEffect, useState } from 'react';
+import { AiFillStar, AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { Product } from '../interfaces';
 import AddedToCartPopup from './AddedToCartPopup';
 import { useNavigate } from 'react-router-dom';
 import addToCart from '../utils/addToCart';
+import handleFavourites from '../utils/handleFavourites';
 
 interface Props {
   product: Product;
@@ -22,27 +22,9 @@ const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
     setCartPopupTrigger(!cartPopupTrigger);
   }
 
-  const handleFavourites = () => {
-    const favouriteItems: Product[] = JSON.parse(localStorage.getItem('favourites') || '[]');
-    const newItem: Product = product;
-    const isInFavourites: boolean = favouriteItems.some((item) => item._id === newItem._id);
-    let newFavourites: Product[];
-
-    if(!isInFavourites) {
-      newFavourites = [...favouriteItems, newItem];
-      setIsFavourite(true);
-    } else {
-      newFavourites = favouriteItems.map(item => {
-        if(item._id === newItem._id) {
-          setIsFavourite(false);
-          return {...item, cartQuantity: -1};
-        } else {
-          return item;
-        }
-      }).filter(item => item.cartQuantity !== -1);
-    }
-
-    localStorage.setItem('favourites', JSON.stringify(newFavourites));
+  const handleFavouritesProducts = () => {
+    handleFavourites(product);
+    setIsFavourite(!isFavourite);
   }
 
   useEffect(() => {
@@ -65,7 +47,7 @@ const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
     <>
     {cartPopupTrigger && <AddedToCartPopup />}
     <div className='products--tile'>
-      <div className='products--like' onClick={handleFavourites}>
+      <div className='products--like' onClick={handleFavouritesProducts}>
         {isFavourite ? (
           <AiFillHeart />
         ) : (

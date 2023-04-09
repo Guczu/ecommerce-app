@@ -89,6 +89,7 @@
     background-color: $secondary-light-gray;
     @include flexMode();
     border-radius: 10px;
+    position: relative;
 
     img {
         width: 30vw;
@@ -130,6 +131,26 @@
             max-width: 400px;
             max-height: 400px;
         }
+    }
+}
+
+.productdetails--like {
+    position: absolute;
+    font-size: 24px;
+    right: 0;
+    top: 0;
+    padding: 7px;
+    color: $light-red;
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 30px;
+    @include flexMode();
+    margin: 5px;
+
+    &:hover {
+        cursor: pointer;
+        color: rgb(177, 38, 38);
     }
 }
 

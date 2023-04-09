@@ -261,6 +261,13 @@
         position: relative;
         top: 15px;
     }
+
+    @include phone {
+        margin: 0;
+        div {
+            font-size: 6rem;
+        }
+    }
 }
 
 .cart--empty-button {
@@ -277,6 +284,10 @@
     &:hover {
         cursor: pointer;
         background-color: $green;
+    }
+
+    @include phone {
+        width: 150px;
     }
 }
 
@@ -296,11 +307,25 @@
     }
 }
 
-.cart--items-totalprice {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    padding: 20px;
+.cart--items-total {
+    @include phone {
+        font-size: 1.2rem;
+        &:nth-child(2) {
+            text-align: right;
+        }
+    }
+
+    @include tablet {
+        &:nth-child(2) {
+            text-align: right;
+        }
+    }
+
+    @include laptop {
+        &:nth-child(2) {
+            text-align: right;
+        }
+    }
 }
 
 .cart--edit-input {

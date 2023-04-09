@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { Product } from '../interfaces'
+import React, { useState, useEffect } from 'react';
+import { Product } from '../interfaces';
 import { useParams } from 'react-router-dom';
-import { AiFillStar } from 'react-icons/ai';
+import { AiFillStar, AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { TbTruckDelivery } from 'react-icons/tb';
 import { MdOutlineAssignmentReturned } from 'react-icons/md';
 import addToCart from '../utils/addToCart';
 import AddedToCartPopup from './AddedToCartPopup';
+import handleFavourites from '../utils/handleFavourites';
 
 interface Props {
     products: Product[];
@@ -16,6 +17,7 @@ const ProductDetails: React.FC<Props> = ({ products, setCartItems }) => {
     const [product, setProduct] = useState<Product | null>(null);
     const [itemCounter, setItemCounter] = useState<number>(0);
     const [cartPopupTrigger, setCartPopupTrigger] = useState<boolean>(false);
+    const [isFavourite, setIsFavourite] = useState<boolean>(false);
     const {id} = useParams();
 
     useEffect(() => {
@@ -37,6 +39,13 @@ const ProductDetails: React.FC<Props> = ({ products, setCartItems }) => {
         }
     }
 
+    const handleFavouritesProducts = () => {
+        if(product) {
+            handleFavourites(product);
+            setIsFavourite(!isFavourite);
+        }
+    }
+
     useEffect(() => {
         const timer: NodeJS.Timeout = setTimeout(() => {
           setCartPopupTrigger(false);
@@ -45,6 +54,16 @@ const ProductDetails: React.FC<Props> = ({ products, setCartItems }) => {
         return () => clearTimeout(timer);
       },[cartPopupTrigger])
 
+      useEffect(() => {
+        if(product) {
+            const favouriteItems: Product[] = JSON.parse(localStorage.getItem('favourites') || '[]');
+            const newItem: Product = product;
+            const isInFavourites: boolean = favouriteItems.some((item) => item._id === newItem._id);
+        
+            isInFavourites ? setIsFavourite(true) : setIsFavourite(false);
+        }
+      }, [product])
+
   return (
     <>
     {cartPopupTrigger && itemCounter !== 0 && <AddedToCartPopup />}
@@ -52,6 +71,13 @@ const ProductDetails: React.FC<Props> = ({ products, setCartItems }) => {
         <div className='productdetails--wrapper'>
             <div className='productdetails--wrapper-left'>
                 <div className='productdetails--thumbnail'>
+                    <div className='productdetails--like' onClick={handleFavouritesProducts}>
+                    {isFavourite ? (
+                        <AiFillHeart />
+                        ) : (
+                        <AiOutlineHeart />
+                        )}
+                    </div>
                     <img src={product && product.images[0] || undefined} alt={product && product.name || "Product image"}></img>
                 </div>
             </div>
