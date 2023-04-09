@@ -3,6 +3,7 @@ import { AiOutlineHeart } from 'react-icons/ai'
 import { AiFillStar, AiFillHeart } from 'react-icons/ai'
 import { Product } from '../interfaces'
 import AddedToCartPopup from './AddedToCartPopup';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   product: Product;
@@ -12,6 +13,7 @@ interface Props {
 const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
   const [cartPopupTrigger, setCartPopupTrigger] = useState<boolean>(false);
   const [isFavourite, setIsFavourite] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const addToCart = () => {
     const cartItems: Product[] = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -77,7 +79,7 @@ const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
   return (
     <>
     {cartPopupTrigger && <AddedToCartPopup />}
-    <div className='products--tile'>
+    <div className='products--tile' onClick={() => navigate(`/product/${product._id}`)}>
       <div className='products--like' onClick={handleFavourites}>
         {isFavourite ? (
           <AiFillHeart />
