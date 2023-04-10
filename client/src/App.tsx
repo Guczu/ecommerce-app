@@ -36,7 +36,7 @@ const App: React.FC = () => {
 
   return (
     <div className='App'>
-      <Navbar cartAmount={cartAmount}/>
+      <Navbar products={products} cartAmount={cartAmount}/>
       <Routes>
         <Route path="/" element={<Home products={products} setCartItems={setCartItems}/>} />
         <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />

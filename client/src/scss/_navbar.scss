@@ -104,6 +104,26 @@
     }
 }
 
+.navbar--search-icon {
+    position: relative;
+    top: 5px;
+    font-size: 32px;
+    margin-left: 2vw;
+    display: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    @include phone {
+        display: block;
+    }
+
+    @include tablet {
+        display: block;
+    }
+}
+
 .navbar--cart {
     @include flexMode();
     position: relative;
@@ -233,7 +253,7 @@
     z-index: 1;
     background-color: white;
     padding: 25px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -259,5 +279,38 @@
     }
     @include laptop {
         left: -60px;
+    }
+}
+
+.navbar--search-dropdown {
+    position: absolute;
+    top: 120%;
+    left: -2vw;
+    width: 24vw;
+    z-index: 999;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 1rem;
+    padding: 10px;
+    @include flexMode();
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.2);
+    display: none;
+
+    @include laptop {
+        width: 40vw;
+        left: -10vw;
+    }
+
+    @include sm-desktop {
+        width: 40vw;
+        left: -10vw;
+    }
+
+    @include desktop {
+        width: 34vw;
+        left: -7vw;
     }
 }

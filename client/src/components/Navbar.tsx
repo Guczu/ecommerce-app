@@ -7,12 +7,39 @@ import { RxHamburgerMenu } from 'react-icons/rx'
 import { RxPerson } from 'react-icons/rx'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+import SearchProduct from './SearchProduct'
+import { Product } from '../interfaces'
 
 interface Props {
+    products: Product[];
     cartAmount: number;
 }
 
-const Navbar: React.FC<Props> = ({ cartAmount }) => {
+const Navbar: React.FC<Props> = ({ products, cartAmount }) => {
+    const [searchText, setSearchText] = useState<string>("");
+    const [foundProducts, setFoundProducts] = useState<Product[]>([]);
+
+    useEffect(() => {
+        const searchBar: HTMLElement | null = document.querySelector('.navbar--search-dropdown');
+        if(searchText.length && foundProducts.length > 0) {
+            searchBar && (searchBar.style.display = 'flex');
+        } else {
+            searchBar && (searchBar.style.display = 'none');
+        }
+    }, [searchText])
+
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const searchText = e.target.value;
+        setSearchText(searchText);
+
+        const foundProducts: Product[] = products.filter(product => (
+            product.name.toLowerCase().includes(searchText.toLowerCase()) || 
+            product.description.toLowerCase().includes(searchText.toLowerCase())
+        ));
+
+        setFoundProducts(foundProducts);
+    }
+
   return (
     <header className='navbar--container'>
         <Link to="/" className='navbar--logo'>
@@ -27,7 +54,16 @@ const Navbar: React.FC<Props> = ({ cartAmount }) => {
         </div>
         <div className='navbar--search'>
             <label htmlFor="searchInput"></label>
-            <input type="input" id="searchInput" placeholder='Search Product'></input>
+            <input type="input" id="searchInput" value={searchText} onChange={(e) => handleSearch(e)} placeholder='Search Product'></input>
+            <div className='navbar--search-dropdown'>
+                {foundProducts.length > 0 && (
+                    foundProducts.slice(0,5).map((product, i) => {
+                        return (
+                            <SearchProduct key={i} product={product} setSearchText={setSearchText} />
+                        )
+                    })
+                )}
+            </div>
             <div className='search--icon'><AiOutlineSearch /></div>
         </div>
         <div className='navbar--account'><RxPerson /></div>

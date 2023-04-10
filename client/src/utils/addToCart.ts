@@ -5,11 +5,11 @@ export default function addToCart(product: Product, quantity: number): Product[]
     const isInCart: boolean = cartItems.some((item) => item._id === product._id);
 
     const newCart: Product[] = isInCart ? (
-      cartItems.map(item => {
-        if(item._id === product._id) {
-          return {...item, cartQuantity: item.cartQuantity + quantity}
+      cartItems.map(alreadyInCartItem => {
+        if(alreadyInCartItem._id === product._id) {
+          return {...alreadyInCartItem, cartQuantity: alreadyInCartItem.cartQuantity + quantity}
         } else {
-          return item;
+          return alreadyInCartItem;
         }
       })
       ) : (
