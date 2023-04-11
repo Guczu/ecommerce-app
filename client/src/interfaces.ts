@@ -8,6 +8,7 @@ export interface Product {
     description: string;
     images: string[];
     cartQuantity: number;
+    [key: string]: any;
 }
 
 export interface UserData {
@@ -21,4 +22,12 @@ export interface UserData {
 
 export interface FormErrors {
     [key: string]: string;
-  }
+}
+
+export interface FiltersList {
+    category: string[] | null;
+    price: number[] | null;
+    color: string[] | null;
+    sortBy: string | null;
+    [key: string]: any;
+}

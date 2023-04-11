@@ -8,9 +8,10 @@ import SimilarItemsSlider from './SimilarItemsSlider'
 interface Props {
   products: Product[];
   setCartItems: React.Dispatch<React.SetStateAction<Product[]>>;
+  setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
 }
 
-const Home: React.FC<Props> = ({ products, setCartItems }) => {
+const Home: React.FC<Props> = ({ products, setCartItems, setProducts }) => {
   return (
     <div className='home--container'>
         <div className='home--banner'>
@@ -25,7 +26,7 @@ const Home: React.FC<Props> = ({ products, setCartItems }) => {
         </div>
 
     {/* sorting options */}
-    <Filters />
+    <Filters products={products} setProducts={setProducts} />
 
     {/* products */}
     <Products products={products} setCartItems={setCartItems} />

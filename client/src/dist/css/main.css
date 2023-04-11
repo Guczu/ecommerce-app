@@ -598,10 +598,14 @@
   font-weight: 600;
   border-radius: 20px;
   margin-right: 1vw;
+  position: relative;
 }
 .filters--label:hover {
   cursor: pointer;
   background-color: #f3f3f3;
+}
+.filters--label:hover .filters--dropdown {
+  display: flex;
 }
 @media screen and (min-width: 0px) and (max-width: 480px) {
   .filters--label {
@@ -643,6 +647,56 @@
 @media screen and (min-width: 768px) and (max-width: 992px) {
   .allfilters {
     display: flex;
+  }
+}
+
+.filters--dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  background-color: white;
+  padding: 15px;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 0.8rem;
+  width: 100px;
+  display: none;
+}
+.filters--dropdown span {
+  text-decoration: none;
+  color: #0D4530;
+  margin-bottom: 5px;
+}
+.filters--dropdown span:hover {
+  color: #228f22;
+}
+.filters--dropdown form {
+  display: flex;
+  flex-direction: column;
+}
+.filters--dropdown input {
+  border-radius: 5px;
+  border: 1px solid #848484;
+}
+.filters--dropdown input:focus {
+  outline: none;
+}
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  .filters--dropdown {
+    left: -60px;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 576px) {
+  .filters--dropdown {
+    left: -60px;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .filters--dropdown {
+    left: -60px;
   }
 }
 
