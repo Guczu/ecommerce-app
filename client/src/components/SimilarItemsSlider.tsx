@@ -11,9 +11,10 @@ import SingleProduct from './SingleProduct';
 interface Props {
     products: Product[];
     setCartItems: React.Dispatch<React.SetStateAction<Product[]>>;
+    isLoading: boolean;
 }
 
-const SimilarItemsSlider: React.FC<Props> = ({ products, setCartItems }) => {
+const SimilarItemsSlider: React.FC<Props> = ({ products, setCartItems, isLoading }) => {
     return (
     <div className='similaritems--container'>
         <span className='similaritems--header'>Similar Items You Might Like</span>
@@ -46,7 +47,7 @@ const SimilarItemsSlider: React.FC<Props> = ({ products, setCartItems }) => {
             {products.map((item, i) => {
                 return (
                     <SwiperSlide key={i}>
-                        <SingleProduct product={item} setCartItems={setCartItems}/>
+                        <SingleProduct product={item} setCartItems={setCartItems} isLoading={isLoading}/>
                     </SwiperSlide>
                 )
             })}

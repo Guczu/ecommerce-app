@@ -5,13 +5,15 @@ import AddedToCartPopup from './AddedToCartPopup';
 import { useNavigate } from 'react-router-dom';
 import addToCart from '../utils/addToCart';
 import handleFavourites from '../utils/handleFavourites';
+import LoadingProduct from './LoadingProduct';
 
 interface Props {
   product: Product;
   setCartItems: React.Dispatch<React.SetStateAction<Product[]>>;
+  isLoading: boolean;
 }
 
-const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
+const SingleProduct: React.FC<Props> = ({ product, setCartItems, isLoading }) => {
   const [cartPopupTrigger, setCartPopupTrigger] = useState<boolean>(false);
   const [isFavourite, setIsFavourite] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -46,7 +48,10 @@ const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
   return (
     <>
     {cartPopupTrigger && <AddedToCartPopup />}
-    <div className='products--tile'>
+    {isLoading ? (
+      <LoadingProduct />
+    ) : (
+      <div className='products--tile'>
       <div className='products--like' onClick={handleFavouritesProducts}>
         {isFavourite ? (
           <AiFillHeart />
@@ -76,6 +81,7 @@ const SingleProduct: React.FC<Props> = ({ product, setCartItems }) => {
       </div>
       <button className='products--button' onClick={addProductToCart}>Add to Cart</button>
     </div>
+    )}
     </>
   )
 }

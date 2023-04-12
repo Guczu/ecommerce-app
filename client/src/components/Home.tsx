@@ -9,9 +9,10 @@ interface Props {
   products: Product[];
   setCartItems: React.Dispatch<React.SetStateAction<Product[]>>;
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
+  isLoading: boolean;
 }
 
-const Home: React.FC<Props> = ({ products, setCartItems, setProducts }) => {
+const Home: React.FC<Props> = ({ products, setCartItems, setProducts, isLoading }) => {
   return (
     <div className='home--container'>
         <div className='home--banner'>
@@ -29,10 +30,10 @@ const Home: React.FC<Props> = ({ products, setCartItems, setProducts }) => {
     <Filters products={products} setProducts={setProducts} />
 
     {/* products */}
-    <Products products={products} setCartItems={setCartItems} />
+    <Products products={products} setCartItems={setCartItems} isLoading={isLoading}/>
 
     {/* similar items slider */}
-    <SimilarItemsSlider products={products} setCartItems={setCartItems}/>
+    <SimilarItemsSlider products={products} setCartItems={setCartItems} isLoading={isLoading}/>
 
     {/* footer */}
     </div>

@@ -6,9 +6,10 @@ import { AiFillHeart } from 'react-icons/ai'
 
 interface Props {
     setCartItems: React.Dispatch<React.SetStateAction<Product[]>>;
+    isLoading: boolean;
 }
 
-const Favourites: React.FC<Props> = ({ setCartItems }) => {
+const Favourites: React.FC<Props> = ({ setCartItems, isLoading }) => {
     const [favouriteItems, setFavouriteItems] = useState<Product[] | []>([]);
 
     useEffect(() => {
@@ -18,7 +19,7 @@ const Favourites: React.FC<Props> = ({ setCartItems }) => {
 
     const showFavouriteItems = favouriteItems.map((item,i) => {
         return (
-            <SingleProduct key={i} product={item} setCartItems={setCartItems}/>
+            <SingleProduct key={i} product={item} setCartItems={setCartItems} isLoading={isLoading}/>
         )
     })
 

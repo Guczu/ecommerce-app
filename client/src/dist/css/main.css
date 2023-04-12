@@ -2012,6 +2012,17 @@ hr {
   margin-right: 1vw;
 }
 
+.loadingproduct--container {
+  width: 250px;
+  height: 300px;
+  margin: 5px;
+  background-color: #f6f6f6;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 body {
   margin: 0;
   padding: 0;

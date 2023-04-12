@@ -5,9 +5,10 @@ import { Product } from '../interfaces'
 interface Props {
   products: Product[];
   setCartItems: React.Dispatch<React.SetStateAction<Product[]>>;
+  isLoading: boolean;
 }
 
-const Products: React.FC<Props> = ({ products, setCartItems }) => {
+const Products: React.FC<Props> = ({ products, setCartItems, isLoading }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const [productsPerPage, setProductsPerPage] = useState<number>(10);
@@ -19,7 +20,7 @@ const Products: React.FC<Props> = ({ products, setCartItems }) => {
   };
 
   const showProducts = products.slice((currentPage-1)*productsPerPage,currentPage*productsPerPage).map((product, i) => (
-    <SingleProduct key={i} product={product} setCartItems={setCartItems} />
+    <SingleProduct key={i} product={product} setCartItems={setCartItems} isLoading={isLoading} />
   ))
 
   useEffect(() => {

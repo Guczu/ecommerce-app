@@ -1,0 +1,9 @@
+.loadingproduct--container {
+    width: 250px;
+    height: 300px;
+    margin: 5px;
+    background-color: $secondary-light-gray;
+    border-radius: 10px;
+    
+    @include flexMode();
+}

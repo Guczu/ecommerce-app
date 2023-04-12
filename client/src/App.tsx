@@ -11,6 +11,7 @@ import ProductDetails from './components/ProductDetails';
 const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [cartAmount, setCartAmount] = useState<number>(0);
 
   useEffect(() => {
@@ -28,8 +29,13 @@ const App: React.FC = () => {
 
   useEffect(() => {
     async function fetchProducts() {
-      const products = await axios.get('https://ecommerce-app-server.vercel.app/products');
-      setProducts(products.data);
+      try {
+        const products = await axios.get('https://ecommerce-app-server.vercel.app/products');
+        setProducts(products.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error(error);
+      }
     }
     fetchProducts();
   }, [])
@@ -38,9 +44,9 @@ const App: React.FC = () => {
     <div className='App'>
       <Navbar products={products} cartAmount={cartAmount}/>
       <Routes>
-        <Route path="/" element={<Home products={products} setCartItems={setCartItems} setProducts={setProducts} />} />
+        <Route path="/" element={<Home products={products} setCartItems={setCartItems} setProducts={setProducts} isLoading={isLoading} />} />
         <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
-        <Route path="/favourites" element={<Favourites setCartItems={setCartItems} />} />
+        <Route path="/favourites" element={<Favourites setCartItems={setCartItems} isLoading={isLoading}/>} />
         <Route path="/product/:id" element={<ProductDetails products={products} setCartItems={setCartItems} />} />
         
       </Routes>
