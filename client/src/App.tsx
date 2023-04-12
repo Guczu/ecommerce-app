@@ -32,7 +32,7 @@ const App: React.FC = () => {
       try {
         const products = await axios.get('https://ecommerce-app-server.vercel.app/products');
         setProducts(products.data);
-        setIsLoading(false);
+          setIsLoading(false);
       } catch (error) {
         console.error(error);
       }

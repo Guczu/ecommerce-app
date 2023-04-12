@@ -4,6 +4,7 @@ import Filters from './Filters'
 import Products from './Products'
 import { Product } from '../interfaces'
 import SimilarItemsSlider from './SimilarItemsSlider'
+import ServicesToHelp from './ServicesToHelp'
 
 interface Props {
   products: Product[];
@@ -34,6 +35,9 @@ const Home: React.FC<Props> = ({ products, setCartItems, setProducts, isLoading 
 
     {/* similar items slider */}
     <SimilarItemsSlider products={products} setCartItems={setCartItems} isLoading={isLoading}/>
+
+    {/* services to help you shop */}
+    <ServicesToHelp />
 
     {/* footer */}
     </div>

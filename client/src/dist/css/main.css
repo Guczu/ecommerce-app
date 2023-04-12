@@ -1379,7 +1379,7 @@
 .similaritems--container {
   width: 80vw;
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .similaritems--header {
@@ -2021,6 +2021,124 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.servicestohelp--container {
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+  font-family: "Exo", sans-serif;
+}
+
+.servicestohelp--header {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  width: 80vw;
+  display: flex;
+  justify-content: flex-start;
+}
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  .servicestohelp--header {
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 576px) {
+  .servicestohelp--header {
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .servicestohelp--header {
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .servicestohelp--header {
+    justify-content: center;
+  }
+}
+
+.servicestohelp--cards {
+  display: flex;
+}
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  .servicestohelp--cards {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 576px) {
+  .servicestohelp--cards {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .servicestohelp--cards {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .servicestohelp--cards {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1400px) {
+  .servicestohelp--cards {
+    flex-direction: column;
+  }
+}
+
+.servicestohelp--card {
+  width: 350px;
+  height: 500px;
+  background-color: #f6f6f6;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.servicestohelp--card-title {
+  width: 70%;
+  height: 100px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding-top: 45px;
+  padding-left: 25px;
+}
+
+.servicestohelp--card-info {
+  width: 60%;
+  height: 100px;
+  font-size: 1rem;
+  font-weight: 400;
+  padding-top: 25px;
+  padding-left: 25px;
+}
+
+.servicestohelp--card-image {
+  height: 250px;
+  background-color: blue;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+}
+.servicestohelp--card-image img {
+  width: 350px;
+  height: 250px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: transform 0.1s ease-in-out;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.servicestohelp--card-image img:hover {
+  transform: scale(1.05);
 }
 
 body {
