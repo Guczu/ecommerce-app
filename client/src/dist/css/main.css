@@ -922,6 +922,8 @@
   align-items: center;
   flex-direction: column;
   font-family: "Exo", sans-serif;
+  margin-top: 60px;
+  margin-bottom: 60px;
 }
 
 .cart--wrapper {
@@ -1432,7 +1434,7 @@
 .favourites--container {
   width: 80vw;
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   display: flex;
   flex-direction: column;
 }
@@ -1540,7 +1542,7 @@
   align-items: center;
   font-family: "Exo", sans-serif;
   flex-direction: column;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .productdetails--wrapper {
@@ -2139,6 +2141,117 @@ hr {
 }
 .servicestohelp--card-image img:hover {
   transform: scale(1.05);
+}
+
+.footer--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  font-family: "Exo", sans-serif;
+  margin-top: 60px;
+}
+
+.footer--cols {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+}
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  .footer--cols {
+    display: none;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 576px) {
+  .footer--cols {
+    display: none;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .footer--cols {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .footer--cols {
+    display: none;
+  }
+}
+
+.footer--col {
+  display: flex;
+  flex-direction: column;
+  width: 15vw;
+  height: 250px;
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+.footer--col span {
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+.footer--col a {
+  text-decoration: none;
+  font-weight: 400;
+  padding-left: 10px;
+  padding-bottom: 3px;
+  color: black;
+}
+.footer--col a:hover {
+  cursor: pointer;
+  color: #848484;
+}
+
+.footer--domain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  width: 80vw;
+  height: 60px;
+}
+.footer--domain span {
+  padding: 20px;
+}
+.footer--domain div {
+  padding: 20px;
+}
+.footer--domain div a {
+  padding: 5px;
+}
+.footer--domain div a:hover {
+  cursor: pointer;
+  color: #848484;
+}
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  .footer--domain {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 576px) {
+  .footer--domain {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .footer--domain {
+    flex-direction: column;
+  }
+}
+
+.footer-col-location {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  padding-left: 10px;
+  padding-bottom: 3px;
+}
+.footer-col-location b:hover {
+  cursor: pointer;
 }
 
 body {

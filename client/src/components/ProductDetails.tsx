@@ -15,7 +15,7 @@ interface Props {
 
 const ProductDetails: React.FC<Props> = ({ products, setCartItems }) => {
     const [product, setProduct] = useState<Product | null>(null);
-    const [itemCounter, setItemCounter] = useState<number>(0);
+    const [itemCounter, setItemCounter] = useState<number>(1);
     const [cartPopupTrigger, setCartPopupTrigger] = useState<boolean>(false);
     const [isFavourite, setIsFavourite] = useState<boolean>(false);
     const {id} = useParams();
@@ -27,7 +27,7 @@ const ProductDetails: React.FC<Props> = ({ products, setCartItems }) => {
 
     const handleCounter = (operation: boolean) => {
         if(product) {
-            operation ? itemCounter < product.amount && setItemCounter(itemCounter + 1) : itemCounter > 0 && setItemCounter(itemCounter - 1);
+            operation ? itemCounter < product.amount && setItemCounter(itemCounter + 1) : itemCounter > 1 && setItemCounter(itemCounter - 1);
         }
     }
 

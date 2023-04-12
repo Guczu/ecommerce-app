@@ -1,0 +1,102 @@
+.footer--container {
+    @include flexMode();
+    width: 100%;
+    flex-direction: column;
+    font-family: 'Exo', sans-serif;
+    margin-top: 60px;
+}
+
+.footer--cols {
+    @include flexMode();
+    width: 80vw;
+
+    @include phone {
+        display: none;
+    }
+    @include tablet {
+        display: none;
+    }
+    @include laptop {
+        display: none;
+    }
+    @include sm-desktop {
+        display: none;
+    }
+}
+
+.footer--col {
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
+    height: 250px;
+    margin-left: 2vw;
+    margin-right: 2vw;
+
+    span {
+        font-size: 1rem;
+        font-weight: 700;
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    a {
+        text-decoration: none;
+        font-weight: 400;
+        padding-left: 10px;
+        padding-bottom: 3px;
+        color: black;
+
+        &:hover {
+            cursor: pointer;
+            color: $gray;
+        }
+    }
+}
+
+.footer--domain {
+    @include flexMode();
+    justify-content: space-between;
+    width: 80vw;
+    height: 60px;
+
+    span {
+        padding: 20px;
+    }
+
+    div {
+        padding: 20px;
+
+        a {
+            padding: 5px;
+
+            &:hover {
+                cursor: pointer;
+                color: $gray;
+            }
+        }
+    }
+
+    @include phone {
+        flex-direction: column;
+    }
+    @include tablet {
+        flex-direction: column;
+    }
+    @include laptop {
+        flex-direction: column;
+    }
+}
+
+.footer-col-location {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    padding-left: 10px;
+    padding-bottom: 3px;
+
+    b {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

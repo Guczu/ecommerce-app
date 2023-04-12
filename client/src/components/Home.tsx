@@ -38,8 +38,7 @@ const Home: React.FC<Props> = ({ products, setCartItems, setProducts, isLoading 
 
     {/* services to help you shop */}
     <ServicesToHelp />
-
-    {/* footer */}
+    
     </div>
   )
 }
