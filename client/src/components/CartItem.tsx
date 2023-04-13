@@ -5,9 +5,10 @@ import { HiOutlineTrash } from 'react-icons/hi'
 interface Props {
     product: Product;
     removeItem: (id: string) => void;
+    handleChangeQuantity: (id: string, operation: boolean) => void;
 }
 
-const CartItem: React.FC<Props> = ({ product, removeItem }) => {
+const CartItem: React.FC<Props> = ({ product, removeItem, handleChangeQuantity }) => {
   return (
     <div className='cartitem--container'>
         <div className='cartitem--thumbnail'>
@@ -20,7 +21,17 @@ const CartItem: React.FC<Props> = ({ product, removeItem }) => {
             </div>
             <div className='cartitem--color-amount'>
                 <span className='cartitem--color'>Color: {product.color}</span>
-                <span className='cartitem--amount'>Quantity: {product.cartQuantity}</span>
+                <div className='cartitem--quantity'>
+                    <button 
+                        className='cartitem--quantity-sub'
+                        onClick={() => handleChangeQuantity(product._id, false)}
+                    >-</button>
+                    <span className='cartitem--amount'>Quantity: {product.cartQuantity}</span>
+                    <button 
+                        className='cartitem--quantity-add'
+                        onClick={() => handleChangeQuantity(product._id, true)}
+                    >+</button>
+                </div>
             </div>
             <div className='cartitem--delete' onClick={() => removeItem(product._id)}>
                 <div className='cartitem--delete-icon'>

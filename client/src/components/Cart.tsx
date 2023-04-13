@@ -38,17 +38,39 @@ const Cart: React.FC<Props> = ({ cartItems, setCartItems }) => {
 
     const removeItem = (id: string) => {
         const newProductsInCart: Product[] = productsInCart.map(item => {
-            if(item._id === id && item.cartQuantity > 1) {
-                return {...item, cartQuantity: item.cartQuantity - 1}
+            if(item._id === id) {
+                return {...item, cartQuantity: -1}
             } 
-            else if(item._id === id && item.cartQuantity <= 1){
-                return {...item, cartQuantity: -1};
-            }
             else {
                 return item;
             }
         }).filter(item => item.cartQuantity !== -1);
         
+        setCartItems(newProductsInCart);
+        setProductsInCart(newProductsInCart);
+        localStorage.setItem('cart', JSON.stringify(newProductsInCart));
+    }
+
+    const handleChangeQuantity = (id: string, operation: boolean) => {
+        let newProductsInCart;
+        
+        if(operation) {
+            newProductsInCart = productsInCart.map(item => {
+                if(item._id === id && item.cartQuantity < item.amount) {
+                    return {...item, cartQuantity: item.cartQuantity + 1};
+                } else {
+                    return item;
+                }
+            })
+        } else {
+            newProductsInCart = productsInCart.map(item => {
+                if(item._id === id && item.cartQuantity > 1) {
+                    return {...item, cartQuantity: item.cartQuantity - 1};
+                } else {
+                    return item;
+                }
+            })
+        }
         setCartItems(newProductsInCart);
         setProductsInCart(newProductsInCart);
         localStorage.setItem('cart', JSON.stringify(newProductsInCart));
@@ -78,7 +100,7 @@ const Cart: React.FC<Props> = ({ cartItems, setCartItems }) => {
     }
 
     const showProducts = productsInCart.slice(0, expandCartItems === false ? 2 : productsInCart.length).map((product, i) => (
-        <CartItem key={i} product={product} removeItem={removeItem}/>
+        <CartItem key={i} product={product} removeItem={removeItem} handleChangeQuantity={handleChangeQuantity}/>
       ))
 
   return (
