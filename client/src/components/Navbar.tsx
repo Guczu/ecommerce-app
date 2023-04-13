@@ -9,15 +9,17 @@ import { AiOutlineHeart } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import SearchProduct from './SearchProduct'
 import { Product } from '../interfaces'
+import fetchAllProducts from '../utils/fetchAllProducts'
 
 interface Props {
-    products: Product[];
     cartAmount: number;
 }
 
-const Navbar: React.FC<Props> = ({ products, cartAmount }) => {
+const Navbar: React.FC<Props> = ({ cartAmount }) => {
+    const [products, setProducts] = useState<Product[]>([]);
     const [searchText, setSearchText] = useState<string>("");
     const [foundProducts, setFoundProducts] = useState<Product[]>([]);
+    const [isSearchFocused, setIsSearchFocused] = useState<boolean>(false);
 
     useEffect(() => {
         const searchBar: HTMLElement | null = document.querySelector('.navbar--search-dropdown');
@@ -27,6 +29,23 @@ const Navbar: React.FC<Props> = ({ products, cartAmount }) => {
             searchBar && (searchBar.style.display = 'none');
         }
     }, [searchText])
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            const fetchedProducts: Product[] = await fetchAllProducts();
+            setProducts(fetchedProducts);
+        }
+        fetchProducts();
+    }, [])
+
+    useEffect(() => {
+        const dropdown = document.querySelector('.navbar--search-dropdown') as HTMLElement;
+        if (isSearchFocused && foundProducts.length > 0) {
+          dropdown.style.display = 'flex';
+        } else {
+          dropdown.style.display = 'none';
+        }
+      }, [isSearchFocused]);
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         const searchText = e.target.value;
@@ -54,7 +73,15 @@ const Navbar: React.FC<Props> = ({ products, cartAmount }) => {
         </div>
         <div className='navbar--search'>
             <label htmlFor="searchInput"></label>
-            <input type="input" id="searchInput" value={searchText} onChange={(e) => handleSearch(e)} placeholder='Search Product'></input>
+            <input 
+                type="input" 
+                id="searchInput" 
+                value={searchText} 
+                onChange={(e) => handleSearch(e)} 
+                placeholder='Search Product'
+                onFocus={() => setIsSearchFocused(true)}
+                onBlur={() => setIsSearchFocused(false)}
+                ></input>
             <div className='navbar--search-dropdown'>
                 {foundProducts.length > 0 && (
                     foundProducts.slice(0,5).map((product, i) => {
