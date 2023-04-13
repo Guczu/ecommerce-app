@@ -12,12 +12,12 @@ export interface Product {
 }
 
 export interface UserData {
-    name: string;
-    address: string;
-    city: string;
-    zipcode: number;
-    mobile: number;
-    email: string;
+    name: string | undefined;
+    address: string | undefined;
+    city: string | undefined;
+    zipcode: string | undefined;
+    mobile: number | undefined;
+    email: string | undefined;
 }
 
 export interface FormErrors {

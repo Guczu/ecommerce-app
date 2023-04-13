@@ -20,21 +20,23 @@ const Cart: React.FC<Props> = ({ cartItems, setCartItems }) => {
     const [formErrors, setFormErrors] = useState<FormErrors>({});
     const [editUserData, setEditUserData] = useState<boolean>(false);
     const [userData, setUserData] = useState<UserData>({
-        name: 'Name',
-        address: 'Address',
-        city: 'City',
-        zipcode: 0,
-        mobile: 0,
-        email: 'Email'
+        name: undefined,
+        address: undefined,
+        city: undefined,
+        zipcode: undefined,
+        mobile: undefined,
+        email: undefined
     });
 
     useEffect(() => {
         setProductsInCart(cartItems);
-        const totalPriceOfCart:number = cartItems.reduce((total, item) => {
+        let totalPriceOfCart:number = cartItems.reduce((total, item) => {
             return total + (item.price * item.cartQuantity);
           }, 0);
+
+        totalPriceOfCart = couponCode === 'testCode1' ? totalPriceOfCart - (totalPriceOfCart/4) : totalPriceOfCart;
         setTotalPrice(totalPriceOfCart);
-    }, [cartItems])
+    }, [cartItems, couponCode])
 
     const removeItem = (id: string) => {
         const newProductsInCart: Product[] = productsInCart.map(item => {
@@ -95,6 +97,14 @@ const Cart: React.FC<Props> = ({ cartItems, setCartItems }) => {
         }
     }
 
+    const handleCouponCode = () => {
+        const couponInput: HTMLInputElement | null = document.querySelector('#coupon');
+        if(couponInput) {
+            const couponValue: string = couponInput.value;
+            setCouponCode(couponValue);
+        }
+    }
+
     const changeUserData = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUserData({...userData, [e.target.name]: e.target.value})
     }
@@ -135,7 +145,7 @@ const Cart: React.FC<Props> = ({ cartItems, setCartItems }) => {
                 <div className='cart--delivery-info'>
                     <div className='cart--title-label'>
                         <span>Delivery information</span>
-                        <button onClick={editForm}>Edit Information</button>
+                        <button onClick={editForm}>{editUserData ? 'Apply changes' : 'Edit Information'}</button>
                     </div>
                     <div className='cart--personal-info'>
                         <div className='cart--personal-label'>Name:</div>
@@ -199,8 +209,8 @@ const Cart: React.FC<Props> = ({ cartItems, setCartItems }) => {
                 <div className='cart--summary'>
                     <span>Order Summary</span>
                     <div className='cart--discount-code'>
-                        <input type="text" placeholder="Enter Coupon Code" onChange={e => setCouponCode(e.target.value)}></input>
-                        <button>Apply coupon</button>
+                        <input type="text" id="coupon" placeholder="Enter Coupon Code"></input>
+                        <button onClick={handleCouponCode}>Apply coupon</button>
                     </div>
                     <span>Payment Details</span>
                     <div className='cart--payment'>
