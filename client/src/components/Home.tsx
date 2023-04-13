@@ -34,7 +34,7 @@ const Home: React.FC<Props> = ({ products, setCartItems, setProducts, isLoading 
     <Products products={products} setCartItems={setCartItems} isLoading={isLoading}/>
 
     {/* similar items slider */}
-    <SimilarItemsSlider products={products} setCartItems={setCartItems} isLoading={isLoading}/>
+    <SimilarItemsSlider setCartItems={setCartItems} isLoading={isLoading}/>
 
     {/* services to help you shop */}
     <ServicesToHelp />

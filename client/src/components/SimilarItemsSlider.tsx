@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Product } from '../interfaces';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar } from 'swiper';
@@ -7,14 +7,24 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import SingleProduct from './SingleProduct';
+import fetchAllProducts from '../utils/fetchAllProducts';
 
 interface Props {
-    products: Product[];
     setCartItems: React.Dispatch<React.SetStateAction<Product[]>>;
     isLoading: boolean;
 }
 
-const SimilarItemsSlider: React.FC<Props> = ({ products, setCartItems, isLoading }) => {
+const SimilarItemsSlider: React.FC<Props> = ({ setCartItems, isLoading }) => {
+    const [products, setProducts] = useState<Product[]>([]);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            const fetchedProducts: Product[] = await fetchAllProducts();
+            setProducts(fetchedProducts);
+        }
+        fetchProducts();
+    }, [])
+
     return (
     <div className='similaritems--container'>
         <span className='similaritems--header'>Similar Items You Might Like</span>
