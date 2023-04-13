@@ -543,6 +543,7 @@
 @media screen and (min-width: 0px) and (max-width: 480px) {
   .filters--container {
     width: 95vw;
+    justify-content: center;
   }
 }
 @media screen and (min-width: 576px) and (max-width: 768px) {
@@ -563,26 +564,6 @@
 
 .filters--wrapper {
   display: flex;
-}
-@media screen and (min-width: 0px) and (max-width: 480px) {
-  .filters--wrapper {
-    display: none;
-  }
-}
-@media screen and (min-width: 480px) and (max-width: 576px) {
-  .filters--wrapper {
-    display: none;
-  }
-}
-@media screen and (min-width: 576px) and (max-width: 768px) {
-  .filters--wrapper {
-    display: none;
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 992px) {
-  .filters--wrapper {
-    display: none;
-  }
 }
 
 .filters--label {
@@ -609,8 +590,8 @@
 }
 @media screen and (min-width: 0px) and (max-width: 480px) {
   .filters--label {
-    margin-left: 4vw;
-    margin-right: 4vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
   }
 }
 
@@ -629,26 +610,6 @@
 .allfilters {
   display: none;
 }
-@media screen and (min-width: 0px) and (max-width: 480px) {
-  .allfilters {
-    display: flex;
-  }
-}
-@media screen and (min-width: 480px) and (max-width: 576px) {
-  .allfilters {
-    display: flex;
-  }
-}
-@media screen and (min-width: 576px) and (max-width: 768px) {
-  .allfilters {
-    display: flex;
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 992px) {
-  .allfilters {
-    display: flex;
-  }
-}
 
 .filters--dropdown {
   position: absolute;
@@ -662,7 +623,8 @@
   flex-direction: column;
   justify-content: flex-start;
   font-size: 0.8rem;
-  width: 100px;
+  width: auto;
+  min-width: 100px;
   display: none;
 }
 .filters--dropdown span {
@@ -677,27 +639,48 @@
   display: flex;
   flex-direction: column;
 }
-.filters--dropdown input {
-  border-radius: 5px;
-  border: 1px solid #848484;
-}
-.filters--dropdown input:focus {
-  outline: none;
-}
 @media screen and (min-width: 0px) and (max-width: 480px) {
   .filters--dropdown {
-    left: -60px;
+    left: -25px;
   }
 }
 @media screen and (min-width: 480px) and (max-width: 576px) {
   .filters--dropdown {
-    left: -60px;
+    left: -25px;
   }
 }
 @media screen and (min-width: 576px) and (max-width: 768px) {
   .filters--dropdown {
-    left: -60px;
+    left: -25px;
   }
+}
+
+.filters--dropdown-input {
+  border-radius: 10px;
+  border: 1px solid #848484;
+  margin-bottom: 10px;
+  height: 15px;
+  font-family: "Exo", sans-serif;
+  padding: 5px;
+  width: 125px;
+}
+.filters--dropdown-input:focus {
+  outline: none;
+}
+
+.filters--dropdown-button {
+  background-color: #ebebeb;
+  border: none;
+  border-radius: 10px;
+  height: 25px;
+  width: 100px;
+  border: 1px solid #848484;
+  font-family: "Exo", sans-serif;
+  font-weight: 500;
+}
+.filters--dropdown-button:hover {
+  cursor: pointer;
+  background-color: #f6f6f6;
 }
 
 .products--container {

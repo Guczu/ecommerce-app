@@ -65,10 +65,10 @@ const SingleFilter: React.FC<Props> = ({ type, filters, setFilters }) => {
             }) : (
               <>
                 <label htmlFor="from">From:</label>
-                <input type="number" autoComplete="off" id="from" name="from" onChange={(e) => setPriceFrom(parseInt(e.target.value))}></input>
+                <input type="number" className='filters--dropdown-input' min='0' autoComplete="off" id="from" name="from" onChange={(e) => setPriceFrom(parseInt(e.target.value))}></input>
                 <label htmlFor="to">To:</label>
-                <input type="number" autoComplete="off" id="to" name="to" onChange={(e) => setPriceTo(parseInt(e.target.value))}></input>
-                <button onClick={handlePriceSort}>Apply</button>
+                <input type="number" autoComplete="off" className='filters--dropdown-input' id="to" name="to" onChange={(e) => setPriceTo(parseInt(e.target.value))}></input>
+                <button className='filters--dropdown-button' onClick={handlePriceSort}>Apply</button>
               </>
             )}
           </form>

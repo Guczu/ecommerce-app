@@ -6,6 +6,7 @@
 
     @include phone {
         width: 95vw;
+        justify-content: center;
     }
     @include laptop {
         width: 75vw;
@@ -20,18 +21,6 @@
 
 .filters--wrapper {
     display: flex;
-    @include phone {
-        display: none;
-    }
-    @include tablet {
-        display: none;
-    }
-    @include laptop {
-        display: none;
-    }
-    @include sm-desktop {
-        display: none;
-    }
 }
 
 .filters--label {
@@ -57,8 +46,8 @@
     }
 
     @include phone {
-        margin-left: 4vw;
-        margin-right: 4vw;
+        margin-left: 1vw;
+        margin-right: 1vw;
     }
 }
 
@@ -76,18 +65,7 @@
 
 .allfilters {
     display: none;
-    @include phone {
-        display: flex;
-    }
-    @include tablet {
-        display: flex;
-    }
-    @include laptop {
-        display: flex;
-    }
-    @include sm-desktop {
-        display: flex;
-    }
+
 }
 
 .filters--dropdown {
@@ -102,7 +80,8 @@
     flex-direction: column;
     justify-content: flex-start;
     font-size: 0.8rem;
-    width: 100px;
+    width: auto;
+    min-width: 100px;
     display: none;
 
     span {
@@ -120,21 +99,43 @@
         flex-direction: column;
     }
 
-    input {
-        border-radius: 5px;
-        border: 1px solid $gray;
-        &:focus {
-            outline: none;
-        }
-    }
-
     @include phone {
-        left: -60px;
+        left: -25px;
     }
     @include tablet {
-        left: -60px;
+        left: -25px;
     }
     @include laptop {
-        left: -60px;
+        left: -25px;
+    }
+}
+
+.filters--dropdown-input {
+    border-radius: 10px;
+    border: 1px solid $gray;
+    margin-bottom: 10px;
+    height: 15px;
+    font-family: 'Exo', sans-serif;
+    padding: 5px;
+    width: 125px;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.filters--dropdown-button {
+    background-color: $light-gray;
+    border: none;
+    border-radius: 10px;
+    height: 25px;
+    width: 100px;
+    border: 1px solid $gray;
+    font-family: 'Exo', sans-serif;
+    font-weight: 500;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secondary-light-gray;
     }
 }
