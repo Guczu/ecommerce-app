@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import logo from '../images/logo.png'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { BsBag } from 'react-icons/bs'
@@ -40,12 +40,14 @@ const Navbar: React.FC<Props> = ({ cartAmount }) => {
 
     useEffect(() => {
         const dropdown = document.querySelector('.navbar--search-dropdown') as HTMLElement;
-        if (isSearchFocused && foundProducts.length > 0) {
-          dropdown.style.display = 'flex';
+        if(isSearchFocused && foundProducts.length > 0) {
+            dropdown.style.display = 'flex';
         } else {
-          dropdown.style.display = 'none';
+            setTimeout(() => {
+                dropdown.style.display = 'none';
+            }, 100)
         }
-      }, [isSearchFocused]);
+    }, [isSearchFocused])
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         const searchText = e.target.value;

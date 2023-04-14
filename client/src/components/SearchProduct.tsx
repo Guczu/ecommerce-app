@@ -13,6 +13,7 @@ const SearchProduct: React.FC<Props> = ({ product, setSearchText }) => {
     const handleRoute = () => {
         setSearchText('');
         navigate(`/product/${product._id}`);
+        window.location.reload();
     }
 
   return (
