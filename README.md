@@ -15,3 +15,5 @@ I found design on [Dribbble](https://dribbble.com/shots/19614098-Shopcart-E-Comm
 
 -   `MONGODB_URL` - MongoDB URL
 -   `PORT` - Additional port to use by server
+
+![homepage](https://img001.prntscr.com/file/img001/q94KnzcXSPq7qEyujSFGiw.png)
